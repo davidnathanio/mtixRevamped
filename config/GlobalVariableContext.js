@@ -3,8 +3,248 @@ import { View, ActivityIndicator } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const DeviceVariables = { __env__: 'Development' };
-export const AppVariables = {};
+export const DeviceVariables = {
+  all_reviews: [
+    {
+      date: 'March 12th, 2024',
+      star: 3,
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et posuere dui, vitae gravida mi. In non est eu ipsum scelerisque lacinia sit amet a odio. Nullam sollicitudin, risus in porta cursus, nisl odio viverra nunc, ac blandit ligula ex sed diam. Ut venenatis, lorem nec commodo mattis, libero nibh finibus dolor, a venenatis quam urna non nisl.',
+      user: 'mtixuser1',
+    },
+    {
+      date: 'March 13th, 2024',
+      star: 4,
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et posuere dui, vitae gravida mi. In non est eu ipsum scelerisque lacinia sit amet a odio. Nullam sollicitudin, risus in porta cursus, nisl odio viverra nunc, ac blandit ligula ex sed diam. Ut venenatis, lorem nec commodo mattis, libero nibh finibus dolor, a venenatis quam urna non nisl.',
+      user: 'mtixuser2',
+    },
+    {
+      date: 'March 14th, 2024',
+      star: 5,
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et posuere dui, vitae gravida mi. In non est eu ipsum scelerisque lacinia sit amet a odio. Nullam sollicitudin, risus in porta cursus, nisl odio viverra nunc, ac blandit ligula ex sed diam. Ut venenatis, lorem nec commodo mattis, libero nibh finibus dolor, a venenatis quam urna non nisl.',
+      user: 'mtixuser3',
+    },
+  ],
+  __env__: 'Development',
+};
+export const AppVariables = {
+  all_food: [
+    {
+      type: 'combo',
+      price: 70000,
+      title: 'Cornell Combo 1 with Matcha Latte',
+      imgUrl:
+        'https://web3.21cineplex.com/resizer/images/fnb/Packshot_11_Popcorn_Cornell_Small__Matcha_Oat_Latte.jpg',
+      quantity: 0,
+      description: '1 Popcorn Cornell (S) + 1 Matcha Latte',
+      estimatedTime: '20 mins',
+    },
+    {
+      type: 'combo',
+      price: 80000,
+      title: 'Cornell Combo 2 with Milo Dinosaurs',
+      imgUrl:
+        'https://web3.21cineplex.com/resizer/images/fnb/Packshot_13_Popcorn_Cornell_Small__Milo_Dino.jpg',
+      quantity: 0,
+      description: '1 Popcorn Cornell (S) + 1 Milo Dinosaurs',
+      estimatedTime: '15 mins',
+    },
+    {
+      type: 'promo',
+      price: 40000,
+      title: 'Combo A with Soft Drink (S)',
+      imgUrl: 'https://web3.21cineplex.com/resizer/images/fnb/Combo_A.jpg',
+      quantity: 0,
+      description: '1 Popcorn Salt (S) + 1 XXI Java Tea (S)',
+      estimatedTime: '10 mins',
+    },
+    {
+      type: 'promo',
+      price: 60000,
+      title: 'Paket Gratis Minum A',
+      imgUrl:
+        'https://web3.21cineplex.com/resizer/images/fnb/gratis_minum_a.jpg',
+      quantity: 0,
+      description: '1 Original Hot Dog + 1 Soft Drink (S)',
+      estimatedTime: '15 mins',
+    },
+    {
+      type: 'promo',
+      price: 60000,
+      title: 'Paket Gratis Minum B',
+      imgUrl:
+        'https://web3.21cineplex.com/resizer/images/fnb/gratis_minum_b.jpg',
+      quantity: 0,
+      description: '1 Chicken Burger + 1 Soft Drink (S)',
+      estimatedTime: '15 mins',
+    },
+    {
+      type: 'popcorn',
+      price: 65000,
+      title: 'Popcorn Milo Dinosaurs (M)',
+      imgUrl:
+        'https://web3.21cineplex.com/resizer/images/fnb/milo_shake_new_mtix.jpg',
+      quantity: 0,
+      description: 'Popcorn Milo Dinosaurs Medium',
+      estimatedTime: '15 mins',
+    },
+    {
+      type: 'popcorn',
+      price: 55000,
+      title: 'Popcorn Milo Dinosaurs (S)',
+      imgUrl:
+        'https://web3.21cineplex.com/resizer/images/fnb/milo_shake_new_mtix.jpg',
+      quantity: 0,
+      description: 'Popcorn Milo Dinosaurs Small',
+      estimatedTime: '15 mins',
+    },
+    {
+      type: 'popcorn',
+      price: 70000,
+      title: 'Popcorn Salt (L)',
+      imgUrl:
+        'https://web3.21cineplex.com/resizer/images/fnb/Popcorn_Gabungan_Salt.jpg',
+      quantity: 0,
+      description: 'Popcorn Salt Large',
+      estimatedTime: '15 mins',
+    },
+    {
+      type: 'popcorn',
+      price: 50000,
+      title: 'Popcorn Salt (M)',
+      imgUrl:
+        'https://web3.21cineplex.com/resizer/images/fnb/Popcorn_Gabungan_Salt.jpg',
+      quantity: 0,
+      description: 'Popcorn Salt Medium',
+      estimatedTime: '15 mins',
+    },
+    {
+      type: 'popcorn',
+      price: 25000,
+      title: 'Popcorn Salt (S)',
+      imgUrl:
+        'https://web3.21cineplex.com/resizer/images/fnb/Popcorn_Gabungan_Salt.jpg',
+      quantity: 0,
+      description: 'Popcorn Salt Small',
+      estimatedTime: '15 mins',
+    },
+    {
+      type: 'fritters',
+      price: 60000,
+      title: 'Mamigor',
+      imgUrl: 'https://web3.21cineplex.com/resizer/images/fnb/MAMIGOR_3.jpg',
+      quantity: 0,
+      description:
+        'Perpaduan mac and cheese bites dengan mini pangsit goreng yang disajikan bersama dengan saus tomat dan sambal khas XXI Café',
+      estimatedTime: '15 mins',
+    },
+    {
+      type: 'fritters',
+      price: 60000,
+      title: 'French Fries (S) Combo XXI Java Tea',
+      imgUrl:
+        'https://web3.21cineplex.com/resizer/images/fnb/French_Fries_Combo_AB.jpg',
+      quantity: 0,
+      description:
+        '1 French Fries (S)+ 1 Popcorn Salt (S) + 1 XXI Java Tea (S)',
+      estimatedTime: '15 mins',
+    },
+    {
+      type: 'light meal',
+      price: 50000,
+      title: 'The Original Hot Dog',
+      imgUrl:
+        'https://web3.21cineplex.com/resizer/images/fnb/fnb_group_2_Hot_Dog.jpg',
+      quantity: 0,
+      description: 'The Original Hot Dog',
+      estimatedTime: '15 mins',
+    },
+    {
+      type: 'light meal',
+      price: 50000,
+      title: 'Chicken Burger',
+      imgUrl:
+        'https://web3.21cineplex.com/resizer/images/fnb/fnb_group_2_Chicken_Burger.jpg',
+      quantity: 0,
+      description: 'Chicken Burger',
+      estimatedTime: '15 mins',
+    },
+    {
+      type: 'bakery & pastry',
+      price: 38000,
+      title: 'Croffle Original',
+      imgUrl:
+        'https://web3.21cineplex.com/resizer/images/fnb/packshot_croffle_ori.jpg',
+      quantity: 0,
+      description: 'Croffle Original',
+      estimatedTime: '15 mins',
+    },
+    {
+      type: 'bakery & pastry',
+      price: 38000,
+      title: 'Croffle Nutella',
+      imgUrl:
+        'https://web3.21cineplex.com/resizer/images/fnb/packshot_croffle_nutella.jpg',
+      quantity: 0,
+      description: 'Croffle Nutella',
+      estimatedTime: '15 mins',
+    },
+    {
+      type: 'drinks',
+      price: 30000,
+      title: 'Blue Ocean Fizz',
+      imgUrl:
+        'https://media.21cineplex.com/webcontent/gallery/pictures/167592864562856_240x360.jpg',
+      quantity: 0,
+      description:
+        'Minuman soda kombinasi sirup Blue Lagoon dan Sprite yang menyegarkan dengan tambahan jeruk nipis, selasih, dan lychee jelly',
+      estimatedTime: '15 mins',
+    },
+    {
+      type: 'drinks',
+      price: 50000,
+      title: 'Orange Jasmine Tea',
+      imgUrl:
+        'https://web3.21cineplex.com/resizer/images/fnb/packshot_orange_jasmine_tea.jpg',
+      quantity: 0,
+      description:
+        'Aroma teh bunga melati dengan potongan buah jeruk sunkist asli serta selasih yang sangat menyegarkan',
+      estimatedTime: '15 mins',
+    },
+  ],
+  all_review: [
+    {
+      date: 'March 12th, 2024',
+      star: 3,
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et posuere dui, vitae gravida mi. In non est eu ipsum scelerisque lacinia sit amet a odio. Nullam sollicitudin, risus in porta cursus, nisl odio viverra nunc, ac blandit ligula ex sed diam. Ut venenatis, lorem nec commodo mattis, libero nibh finibus dolor, a venenatis quam urna non nisl.',
+      user: 'mtixuser1',
+    },
+    {
+      date: 'March 13th, 2024',
+      star: 4,
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et posuere dui, vitae gravida mi. In non est eu ipsum scelerisque lacinia sit amet a odio. Nullam sollicitudin, risus in porta cursus, nisl odio viverra nunc, ac blandit ligula ex sed diam. Ut venenatis, lorem nec commodo mattis, libero nibh finibus dolor, a venenatis quam urna non nisl.',
+      user: 'mtixuser2',
+    },
+    {
+      date: 'March 14th, 2024',
+      star: 5,
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et posuere dui, vitae gravida mi. In non est eu ipsum scelerisque lacinia sit amet a odio. Nullam sollicitudin, risus in porta cursus, nisl odio viverra nunc, ac blandit ligula ex sed diam. Ut venenatis, lorem nec commodo mattis, libero nibh finibus dolor, a venenatis quam urna non nisl.',
+      user: 'mtixuser3',
+    },
+  ],
+  purchase_history: [
+    {
+      booking_code: 12512,
+      selected_tickets: ['A1'],
+      transaction_date: 'May 3rd 2024, 11:20 AM',
+    },
+  ],
+  selected_history: {
+    booking_code: 12512,
+    selected_tickets: ['A1'],
+    transaction_date: 'May 3rd 2024, 11:20 AM',
+  },
+  selected_seats: [],
+};
 const GlobalVariableContext = React.createContext();
 const GlobalVariableUpdater = React.createContext();
 const keySuffix = '';

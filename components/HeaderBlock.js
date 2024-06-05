@@ -91,7 +91,7 @@ const HeaderBlock = props => {
           dimensions.width
         )}
       >
-        {'Movie Schedule'}
+        {'Movie Reviews'}
       </Text>
     </View>
   );

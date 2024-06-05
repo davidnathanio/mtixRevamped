@@ -42,10 +42,11 @@ const App = () => {
     Inter_400Regular: Fonts.Inter_400Regular,
     Inter_500Medium: Fonts.Inter_500Medium,
     Inter_600SemiBold: Fonts.Inter_600SemiBold,
-    Poppins_400Regular: Fonts.Poppins_400Regular,
-    Poppins_700Bold: Fonts.Poppins_700Bold,
-    Poppins_600SemiBold: Fonts.Poppins_600SemiBold,
     Poppins_500Medium: Fonts.Poppins_500Medium,
+    Poppins_700Bold: Fonts.Poppins_700Bold,
+    Poppins_400Regular: Fonts.Poppins_400Regular,
+    Poppins_600SemiBold: Fonts.Poppins_600SemiBold,
+    Poppins_800ExtraBold: Fonts.Poppins_800ExtraBold,
   });
 
   React.useEffect(() => {
