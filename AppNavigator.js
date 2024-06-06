@@ -173,6 +173,7 @@ export default function RootAppNavigator() {
       linking={LinkingConfiguration}
     >
       <Stack.Navigator
+        initialRouteName="BottomTabNavigator"
         screenOptions={({ navigation }) => ({
           headerBackImage:
             Platform.OS === 'android' ? DefaultAndroidBackIcon : null,
