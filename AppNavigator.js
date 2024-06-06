@@ -13,6 +13,7 @@ import Breakpoints from './utils/Breakpoints';
 import useWindowDimensions from './utils/useWindowDimensions';
 
 import ChooseSeatsPageScreen from './screens/ChooseSeatsPageScreen';
+import FAQScreen from './screens/FAQScreen';
 import HomepageScreen from './screens/HomepageScreen';
 import MfoodConfirmOrderScreen from './screens/MfoodConfirmOrderScreen';
 import MfoodMenuPageScreen from './screens/MfoodMenuPageScreen';
@@ -46,24 +47,27 @@ function DefaultAndroidBackIcon({ tintColor }) {
 }
 
 function BottomTabNavigator() {
+  const Constants = GlobalVariables.useValues();
+
   const tabBarIcons = {
     HomepageScreen: 'MaterialCommunityIcons/movie-outline',
     UpComingScreen: 'MaterialCommunityIcons/calendar-clock',
     TheaterScreen: 'MaterialCommunityIcons/theater',
-    TheaterScreen: '',
+    MfoodScreen: 'MaterialCommunityIcons/popcorn',
+    MyMtixScreen: 'MaterialCommunityIcons/account-circle-outline',
   };
 
   return (
     <Tab.Navigator
-      initialRouteName="UpComingScreen"
+      initialRouteName="HomepageScreen"
       screenOptions={({ navigation }) => ({
         headerBackImage:
           Platform.OS === 'android' ? DefaultAndroidBackIcon : null,
         headerShown: false,
-        headerTitleStyle: { fontFamily: 'Poppins_700Bold' },
+        headerTitleStyle: { fontFamily: 'Poppins_400Regular' },
         tabBarActiveTintColor: theme.colors['Secondary Color'],
         tabBarLabelPosition: 'below-icon',
-        tabBarLabelStyle: { fontFamily: 'Poppins_400Regular' },
+        tabBarLabelStyle: { fontFamily: 'Poppins_500Medium', fontSize: 12 },
         tabBarStyle: {
           backgroundColor: theme.colors['Surface'],
           borderTopColor: 'transparent',
@@ -116,6 +120,38 @@ function BottomTabNavigator() {
           ),
           tabBarLabel: 'Theater',
           title: 'Theater',
+        })}
+      />
+      <Tab.Screen
+        name="MfoodScreen"
+        component={MfoodScreen}
+        options={({ navigation }) => ({
+          headerShown: false,
+          tabBarIcon: ({ focused, color }) => (
+            <Icon
+              name="MaterialCommunityIcons/popcorn"
+              size={25}
+              color={focused ? theme.colors['Secondary Color'] : color}
+            />
+          ),
+          tabBarLabel: 'm.food',
+          title: 'm.food',
+        })}
+      />
+      <Tab.Screen
+        name="MyMtixScreen"
+        component={MyMtixScreen}
+        options={({ navigation }) => ({
+          headerShown: false,
+          tabBarIcon: ({ focused, color }) => (
+            <Icon
+              name="MaterialCommunityIcons/account-circle-outline"
+              size={25}
+              color={focused ? theme.colors['Secondary Color'] : color}
+            />
+          ),
+          tabBarLabel: 'My m.tix',
+          title: 'My m.tix',
         })}
       />
     </Tab.Navigator>
@@ -175,14 +211,6 @@ export default function RootAppNavigator() {
           })}
         />
         <Stack.Screen
-          name="MfoodScreen"
-          component={MfoodScreen}
-          options={({ navigation }) => ({
-            headerShown: false,
-            title: 'm.food',
-          })}
-        />
-        <Stack.Screen
           name="MfoodMenuPageScreen"
           component={MfoodMenuPageScreen}
           options={({ navigation }) => ({
@@ -231,19 +259,19 @@ export default function RootAppNavigator() {
           })}
         />
         <Stack.Screen
-          name="MyMtixScreen"
-          component={MyMtixScreen}
-          options={({ navigation }) => ({
-            headerShown: false,
-            title: 'My m.tix',
-          })}
-        />
-        <Stack.Screen
           name="PurchaseDetailsScreen"
           component={PurchaseDetailsScreen}
           options={({ navigation }) => ({
             headerShown: false,
             title: 'Purchase Details Screen',
+          })}
+        />
+        <Stack.Screen
+          name="FAQScreen"
+          component={FAQScreen}
+          options={({ navigation }) => ({
+            headerShown: false,
+            title: 'FAQ',
           })}
         />
         <Stack.Screen

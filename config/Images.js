@@ -7,4 +7,6 @@ export default {
   MdiVoucherOutline: require('../assets/images/MdiVoucherOutline.png'),
   Image20: require('../assets/images/Image20.png'),
   MdiVoucher: require('../assets/images/MdiVoucher.png'),
+  Image53: require('../assets/images/Image53.png'),
+  Image52: require('../assets/images/Image52.png'),
 };

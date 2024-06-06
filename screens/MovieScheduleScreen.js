@@ -112,7 +112,6 @@ line two` ) and will not work with special characters inside of quotes ( example
             backgroundColor: 'rgb(1, 83, 81)',
             flexDirection: 'row',
             flexWrap: 'nowrap',
-            height: 49,
             justifyContent: 'flex-start',
             paddingBottom: 12,
             paddingTop: 13,
@@ -129,6 +128,7 @@ line two` ) and will not work with special characters inside of quotes ( example
               justifyContent: 'center',
               marginLeft: 16,
               position: 'absolute',
+              top: 15,
               zIndex: 1,
             },
             dimensions.width
@@ -340,6 +340,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                   flexDirection: 'row',
                   gap: 10,
                   justifyContent: 'flex-start',
+                  marginTop: 35,
                 },
                 dimensions.width
               )}
@@ -372,7 +373,7 @@ line two` ) and will not work with special characters inside of quotes ( example
         {/* Cinema Filter */}
         <View
           style={StyleSheet.applyWidth(
-            { flexDirection: 'row', flexWrap: 'wrap', gap: 5 },
+            { flexDirection: 'row', flexWrap: 'wrap', gap: 5, marginTop: 10 },
             dimensions.width
           )}
         >

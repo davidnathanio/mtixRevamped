@@ -230,7 +230,7 @@ line two` ) and will not work with special characters inside of quotes ( example
               paddingRight: 11,
               paddingTop: 6,
               position: 'relative',
-              top: -30,
+              top: -50,
               width: '90%',
               zIndex: 1,
             },
@@ -487,7 +487,7 @@ line two` ) and will not work with special characters inside of quotes ( example
             </View>
           </Pressable>
         </View>
-
+        {/* Account Settings */}
         <View
           style={StyleSheet.applyWidth(
             { paddingLeft: 16, paddingRight: 16 },
@@ -821,7 +821,7 @@ line two` ) and will not work with special characters inside of quotes ( example
             </View>
           </Pressable>
         </View>
-        {/* View 2 */}
+        {/* Other Settings */}
         <View
           style={StyleSheet.applyWidth(
             { marginBottom: 50, paddingLeft: 16, paddingRight: 16 },
@@ -848,7 +848,15 @@ line two` ) and will not work with special characters inside of quotes ( example
             {'Other Settings'}
           </Text>
 
-          <Pressable>
+          <Pressable
+            onPress={() => {
+              try {
+                navigation.navigate('FAQScreen');
+              } catch (err) {
+                console.error(err);
+              }
+            }}
+          >
             {/* Menu 1 */}
             <View
               style={StyleSheet.applyWidth(

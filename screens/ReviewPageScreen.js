@@ -132,13 +132,12 @@ line two` ) and will not work with special characters inside of quotes ( example
       <View
         style={StyleSheet.applyWidth(
           {
-            alignContent: 'flex-start',
+            alignContent: 'center',
             alignItems: 'flex-start',
             alignSelf: 'auto',
             backgroundColor: 'rgb(1, 83, 81)',
             flexDirection: 'row',
             flexWrap: 'nowrap',
-            height: 49,
             justifyContent: 'flex-start',
             paddingBottom: 12,
             paddingTop: 13,
@@ -164,7 +163,6 @@ line two` ) and will not work with special characters inside of quotes ( example
                 justifyContent: 'center',
                 marginLeft: 16,
                 position: 'absolute',
-                top: 0,
                 zIndex: 1,
               },
               dimensions.width
