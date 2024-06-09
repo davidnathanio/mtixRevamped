@@ -20,7 +20,7 @@ import {
 import { Image, Text, View } from 'react-native';
 
 const TheaterScreen = props => {
-  const { theme } = props;
+  const { theme, navigation } = props;
   const dimensions = useWindowDimensions();
   const Constants = GlobalVariables.useValues();
   const Variables = Constants;
@@ -38,6 +38,7 @@ const TheaterScreen = props => {
     { id: 7, type: 'imax', theater: 'SUMMARECON MALL BANDUNG IMAX' },
   ]);
   const [all_schedules, setAll_schedules] = React.useState([]);
+  const [isToggled, setIsToggled] = React.useState(false);
   const [selected_filter, setSelected_filter] = React.useState('semua');
   const [shownTheaters, setShownTheaters] = React.useState([
     { id: 1, type: 'xxi', theater: 'BRAGA XXI' },
@@ -539,56 +540,68 @@ line two` ) and will not work with special characters inside of quotes ( example
           renderItem={({ item, index }) => {
             const listData = item;
             return (
-              <View
-                style={StyleSheet.applyWidth(
-                  {
-                    alignItems: 'center',
-                    borderBottomWidth: 1,
-                    flexDirection: 'row',
-                    gap: 25,
-                    paddingBottom: 15,
-                    paddingTop: 15,
-                  },
-                  dimensions.width
-                )}
+              <Pressable
+                onPress={() => {
+                  try {
+                    if (listData?.theater === 'BRAGA XXI') {
+                      navigation.navigate('TheaterMovieScreen');
+                    }
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
               >
-                <Image
-                  resizeMode={'cover'}
-                  {...GlobalStyles.ImageStyles(theme)['Image'].props}
-                  source={Images.Image20}
+                <View
                   style={StyleSheet.applyWidth(
-                    StyleSheet.compose(
-                      GlobalStyles.ImageStyles(theme)['Image'].style,
-                      { height: 35, width: 35 }
-                    ),
-                    dimensions.width
-                  )}
-                />
-                <Text
-                  accessible={true}
-                  {...GlobalStyles.TextStyles(theme)['Poppins'].props}
-                  style={StyleSheet.applyWidth(
-                    StyleSheet.compose(
-                      GlobalStyles.TextStyles(theme)['Poppins'].style,
-                      {
-                        color: theme.colors['Text'],
-                        flex: 1,
-                        fontFamily: 'Poppins_500Medium',
-                        fontSize: 18,
-                        textAlign: 'left',
-                      }
-                    ),
+                    {
+                      alignItems: 'center',
+                      borderBottomWidth: 1,
+                      flexDirection: 'row',
+                      gap: 25,
+                      paddingBottom: 15,
+                      paddingTop: 15,
+                    },
                     dimensions.width
                   )}
                 >
-                  {listData?.theater}
-                </Text>
-                <Icon
-                  size={24}
-                  color={theme.colors['Text']}
-                  name={'Entypo/chevron-right'}
-                />
-              </View>
+                  <Image
+                    resizeMode={'cover'}
+                    {...GlobalStyles.ImageStyles(theme)['Image'].props}
+                    source={Images.Image20}
+                    style={StyleSheet.applyWidth(
+                      StyleSheet.compose(
+                        GlobalStyles.ImageStyles(theme)['Image'].style,
+                        { height: 35, width: 35 }
+                      ),
+                      dimensions.width
+                    )}
+                  />
+                  <Text
+                    accessible={true}
+                    {...GlobalStyles.TextStyles(theme)['Poppins'].props}
+                    style={StyleSheet.applyWidth(
+                      StyleSheet.compose(
+                        GlobalStyles.TextStyles(theme)['Poppins'].style,
+                        {
+                          color: theme.colors['Text'],
+                          flex: 1,
+                          fontFamily: 'Poppins_500Medium',
+                          fontSize: 18,
+                          textAlign: 'left',
+                        }
+                      ),
+                      dimensions.width
+                    )}
+                  >
+                    {listData?.theater}
+                  </Text>
+                  <Icon
+                    size={24}
+                    color={theme.colors['Text']}
+                    name={'Entypo/chevron-right'}
+                  />
+                </View>
+              </Pressable>
             );
           }}
           showsHorizontalScrollIndicator={true}

@@ -9,4 +9,8 @@ export default {
   MdiVoucher: require('../assets/images/MdiVoucher.png'),
   Image53: require('../assets/images/Image53.png'),
   Image52: require('../assets/images/Image52.png'),
+  Building: require('../assets/images/Building.png'),
+  Clock: require('../assets/images/Clock.png'),
+  Map: require('../assets/images/Map.png'),
+  Avatar: require('../assets/images/Avatar.png'),
 };

@@ -24,6 +24,38 @@ const TicketConfirmOrderScreen = props => {
   const Variables = Constants;
   const setGlobalVariableValue = GlobalVariables.useSetValue();
   const [selected_filter, setSelected_filter] = React.useState('');
+  const confirmOrder = (transactionHistory, selectedSeats) => {
+    // Type the code for the body of your function or hook here.
+    // Functions can be triggered via Button/Touchable actions.
+    // Hooks are run per ReactJS rules.
+
+    /* String line breaks are accomplished with backticks ( example: `line one
+line two` ) and will not work with special characters inside of quotes ( example: "line one line two" ) */
+    const bookingCode = Math.floor(10000 + Math.random() * 90000); // Generates a random code between 10000 and 99999
+
+    const date = new Date();
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+    };
+    const transactionDate = new Intl.DateTimeFormat('en-US', options).format(
+      date
+    );
+    const cloneSeats = selectedSeats.slice(0);
+
+    const newTransaction = {
+      booking_code: bookingCode,
+      selected_tickets: cloneSeats,
+      transaction_date: transactionDate,
+    };
+    transactionHistory.push(newTransaction);
+    console.log(transactionHistory);
+    return transactionHistory;
+  };
+
   const multiply = (quantity, price) => {
     // Type the code for the body of your function or hook here.
     // Functions can be triggered via Button/Touchable actions.
@@ -48,36 +80,6 @@ line two` ) and will not work with special characters inside of quotes ( example
       0
     );
     return Math.round(totalPrice);
-  };
-
-  const confirmOrder = (transactionHistory, selectedSeats) => {
-    // Type the code for the body of your function or hook here.
-    // Functions can be triggered via Button/Touchable actions.
-    // Hooks are run per ReactJS rules.
-
-    /* String line breaks are accomplished with backticks ( example: `line one
-line two` ) and will not work with special characters inside of quotes ( example: "line one line two" ) */
-    const bookingCode = Math.floor(10000 + Math.random() * 90000); // Generates a random code between 10000 and 99999
-
-    const date = new Date();
-    const options = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
-    };
-    const transactionDate = new Intl.DateTimeFormat('en-US', options).format(
-      date
-    );
-
-    const newTransaction = {
-      booking_code: bookingCode,
-      selected_tickets: selectedSeats,
-      transaction_date: transactionDate,
-    };
-    transactionHistory.push(newTransaction);
-    return transactionHistory;
   };
 
   return (

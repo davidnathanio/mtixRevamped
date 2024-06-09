@@ -4,7 +4,9 @@ import * as GlobalVariables from '../config/GlobalVariableContext';
 import Breakpoints from '../utils/Breakpoints';
 import * as StyleSheet from '../utils/StyleSheet';
 import useWindowDimensions from '../utils/useWindowDimensions';
+import { MapMarker, MapView } from '@draftbit/maps';
 import {
+  Divider,
   Icon,
   Pressable,
   ScreenContainer,
@@ -14,7 +16,7 @@ import {
 } from '@draftbit/ui';
 import { Image, Text, View } from 'react-native';
 
-const MovieScheduleScreen = props => {
+const TheaterMovieScreen = props => {
   const { theme, navigation } = props;
   const dimensions = useWindowDimensions();
   const Constants = GlobalVariables.useValues();
@@ -35,6 +37,7 @@ const MovieScheduleScreen = props => {
       cinema: 'CIWALK XXI',
     },
   ]);
+  const [isToggled, setIsToggled] = React.useState(false);
   const [selected_filter, setSelected_filter] = React.useState('semua');
   const [shown_schedules, setShown_schedules] = React.useState([
     {
@@ -139,7 +142,7 @@ line two` ) and will not work with special characters inside of quotes ( example
             />
           </Pressable>
         </View>
-        {/* Daftar Film */}
+
         <Text
           accessible={true}
           {...GlobalStyles.TextStyles(theme)['Text'].props}
@@ -155,7 +158,7 @@ line two` ) and will not work with special characters inside of quotes ( example
             dimensions.width
           )}
         >
-          {'Movie Schedule'}
+          {'BRAGA XXI'}
         </Text>
       </View>
 
@@ -166,450 +169,301 @@ line two` ) and will not work with special characters inside of quotes ( example
         nestedScrollEnabled={false}
         showsHorizontalScrollIndicator={true}
         showsVerticalScrollIndicator={true}
-        style={StyleSheet.applyWidth(
-          { gap: 6, marginLeft: 16, marginRight: 16 },
-          dimensions.width
-        )}
+        style={StyleSheet.applyWidth({ gap: 6 }, dimensions.width)}
       >
-        {/* Movie Details */}
-        <View
-          style={StyleSheet.applyWidth(
-            { flexDirection: 'row', gap: 35 },
-            dimensions.width
-          )}
-        >
-          <Image
-            resizeMode={'cover'}
-            {...GlobalStyles.ImageStyles(theme)['Image'].props}
-            source={{
-              uri: 'https://cdn0-production-images-kly.akamaized.net/xCJgLGq2Sh43x0oVBpfGK9xlv6Y=/800x1066/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/4788070/original/025926800_1711640349-428258907_18296664022157327_6175042479492571650_n.jpg',
-            }}
+        <View style={StyleSheet.applyWidth({ height: 170 }, dimensions.width)}>
+          {/* Map */}
+          <View
             style={StyleSheet.applyWidth(
-              StyleSheet.compose(
-                GlobalStyles.ImageStyles(theme)['Image'].style,
-                { borderRadius: 10, height: 175, width: 114 }
-              ),
+              {
+                backgroundColor: theme.colors['Custom Color'],
+                bottom: 0,
+                flex: 1,
+                height: 170,
+                justifyContent: 'flex-end',
+                left: 0,
+                position: 'relative',
+                right: 0,
+                top: 0,
+              },
               dimensions.width
             )}
-          />
-          <View style={StyleSheet.applyWidth({ gap: 5 }, dimensions.width)}>
-            <Text
-              accessible={true}
-              {...GlobalStyles.TextStyles(theme)['Text'].props}
+          >
+            {/* Map */}
+            <MapView
+              apiKey={'AIzaSyBzktToWosjNgrrUawZnbslB9NSXSXCkwo'}
+              autoClusterMarkers={false}
+              autoClusterMarkersDistanceMeters={10000}
+              customMapStyle={'Beautiful West Coast Villa'}
+              loadingEnabled={true}
+              moveOnMarkerPress={true}
+              rotateEnabled={true}
+              scrollEnabled={true}
+              showsCompass={false}
+              showsPointsOfInterest={true}
+              showsUserLocation={false}
+              zoomEnabled={true}
+              {...GlobalStyles.MapViewStyles(theme)['Map View'].props}
+              latitude={-6.9171}
+              longitude={107.6086}
+              mapType={'standard'}
               style={StyleSheet.applyWidth(
-                StyleSheet.compose(
-                  GlobalStyles.TextStyles(theme)['Text'].style,
-                  { fontFamily: 'Poppins_700Bold', fontSize: 18 }
-                ),
+                GlobalStyles.MapViewStyles(theme)['Map View'].style,
                 dimensions.width
               )}
+              zoom={20}
             >
-              {'VINA: SEBELUM 7 HARI'}
-            </Text>
-            {/* Category */}
-            <View
-              style={StyleSheet.applyWidth(
-                { flexDirection: 'row', gap: 10, justifyContent: 'center' },
-                dimensions.width
-              )}
-            >
-              <View
-                style={StyleSheet.applyWidth(
-                  {
-                    backgroundColor: 'rgb(189, 151, 89)',
-                    borderBottomLeftRadius: 5,
-                    borderBottomRightRadius: 5,
-                    borderTopLeftRadius: 5,
-                    borderTopRightRadius: 5,
-                    paddingBottom: 1,
-                    paddingLeft: 10,
-                    paddingRight: 10,
-                    paddingTop: 1,
-                  },
-                  dimensions.width
-                )}
-              >
-                <Text
-                  accessible={true}
-                  {...GlobalStyles.TextStyles(theme)['Text'].props}
-                  style={StyleSheet.applyWidth(
-                    StyleSheet.compose(
-                      GlobalStyles.TextStyles(theme)['Text'].style,
-                      {
-                        color: theme.colors['Surface'],
-                        fontFamily: 'Poppins_700Bold',
-                        fontSize: 16,
-                      }
-                    ),
-                    dimensions.width
-                  )}
-                >
-                  {'2D'}
-                </Text>
-              </View>
-              {/* View 2 */}
-              <View
-                style={StyleSheet.applyWidth(
-                  {
-                    backgroundColor: 'rgb(189, 151, 89)',
-                    borderBottomLeftRadius: 5,
-                    borderBottomRightRadius: 5,
-                    borderTopLeftRadius: 5,
-                    borderTopRightRadius: 5,
-                    paddingBottom: 1,
-                    paddingLeft: 5,
-                    paddingRight: 5,
-                    paddingTop: 1,
-                  },
-                  dimensions.width
-                )}
-              >
-                <Text
-                  accessible={true}
-                  {...GlobalStyles.TextStyles(theme)['Text'].props}
-                  style={StyleSheet.applyWidth(
-                    StyleSheet.compose(
-                      GlobalStyles.TextStyles(theme)['Text'].style,
-                      {
-                        color: theme.colors['Surface'],
-                        fontFamily: 'Poppins_700Bold',
-                        fontSize: 16,
-                      }
-                    ),
-                    dimensions.width
-                  )}
-                >
-                  {'D17+'}
-                </Text>
-              </View>
-            </View>
-            {/* Genre */}
-            <Text
-              accessible={true}
-              {...GlobalStyles.TextStyles(theme)['Text'].props}
-              style={StyleSheet.applyWidth(
-                StyleSheet.compose(
-                  GlobalStyles.TextStyles(theme)['Text'].style,
-                  {
-                    alignSelf: 'center',
-                    color: 'rgb(132, 132, 132)',
-                    fontSize: 16,
-                  }
-                ),
-                dimensions.width
-              )}
-            >
-              {'Horror, Drama'}
-            </Text>
-            {/* Rating */}
-            <Text
-              accessible={true}
-              {...GlobalStyles.TextStyles(theme)['Text'].props}
-              style={StyleSheet.applyWidth(
-                StyleSheet.compose(
-                  GlobalStyles.TextStyles(theme)['Text'].style,
-                  {
-                    alignSelf: 'center',
-                    color: 'rgb(248, 193, 0)',
-                    fontFamily: 'Poppins_700Bold',
-                    fontSize: 18,
-                  }
-                ),
-                dimensions.width
-              )}
-            >
-              {'★ 3,7'}
-            </Text>
-            {/* Duration */}
-            <View
-              style={StyleSheet.applyWidth(
-                {
-                  alignItems: 'stretch',
-                  flexDirection: 'row',
-                  gap: 10,
-                  justifyContent: 'flex-start',
-                  marginTop: 35,
-                },
-                dimensions.width
-              )}
-            >
-              <Icon
-                color={theme.colors['Primary Color']}
-                name={'MaterialCommunityIcons/clock-time-four'}
-                size={22}
+              <MapMarker
+                androidUseDefaultIconImplementation={false}
+                flat={false}
+                pinImageSize={50}
+                tracksViewChanges={true}
+                latitude={-6.9171}
+                longitude={107.6086}
+                pinColor={theme.colors['Custom Color_4']}
+                title={'Braga XXI'}
               />
-              <Text
-                accessible={true}
-                {...GlobalStyles.TextStyles(theme)['Text'].props}
-                style={StyleSheet.applyWidth(
-                  StyleSheet.compose(
-                    GlobalStyles.TextStyles(theme)['Text'].style,
-                    {
-                      fontFamily: 'Poppins_400Regular',
-                      fontSize: 14,
-                      textAlign: 'center',
-                    }
-                  ),
-                  dimensions.width
-                )}
-              >
-                {'1 Hour 34 Minutes\n'}
-              </Text>
-            </View>
+            </MapView>
           </View>
         </View>
-        {/* Cinema Filter */}
+        {/* Map Details Section */}
         <View
           style={StyleSheet.applyWidth(
-            { flexDirection: 'row', flexWrap: 'wrap', gap: 5, marginTop: 10 },
+            { gap: 10, paddingBottom: 14, paddingTop: 11 },
             dimensions.width
           )}
         >
-          <Pressable
-            onPress={() => {
-              try {
-                setSelected_filter('semua');
-                setShown_schedules(updateFilter(all_schedules, 'semua'));
-              } catch (err) {
-                console.error(err);
-              }
-            }}
+          {/* map details */}
+          <View
+            style={StyleSheet.applyWidth(
+              {
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                gap: 15,
+              },
+              dimensions.width
+            )}
           >
-            <View
+            <Icon
+              size={24}
+              color={theme.colors['Primary Color']}
+              name={'Ionicons/ios-location-sharp'}
               style={StyleSheet.applyWidth(
-                {
-                  backgroundColor: [
-                    {
-                      minWidth: Breakpoints.Mobile,
-                      value: 'rgb(255, 255, 255)',
-                    },
-                    {
-                      minWidth: Breakpoints.Mobile,
-                      value: selectedFilterColor('semua', selected_filter),
-                    },
-                  ],
-                  borderColor: 'rgb(189, 151, 89)',
-                  borderRadius: 5,
-                  borderWidth: 1,
-                  paddingBottom: 1,
-                  paddingLeft: 9,
-                  paddingRight: 9,
-                  paddingTop: 1,
-                },
+                { backgroundColor: 'rgba(0, 0, 0, 0)', marginLeft: 16 },
+                dimensions.width
+              )}
+            />
+            <Text
+              accessible={true}
+              {...GlobalStyles.TextStyles(theme)['Poppins'].props}
+              style={StyleSheet.applyWidth(
+                StyleSheet.compose(
+                  GlobalStyles.TextStyles(theme)['Poppins'].style,
+                  { color: theme.colors['Strong'] }
+                ),
                 dimensions.width
               )}
             >
-              {/* Semua */}
-              <Text
-                accessible={true}
-                {...GlobalStyles.TextStyles(theme)['Text'].props}
-                style={StyleSheet.applyWidth(
-                  StyleSheet.compose(
-                    GlobalStyles.TextStyles(theme)['Text'].style,
-                    {
-                      alignSelf: 'center',
-                      color: [
-                        {
-                          minWidth: Breakpoints.Mobile,
-                          value: 'rgb(189, 151, 89)',
-                        },
-                        {
-                          minWidth: Breakpoints.Mobile,
-                          value: selectedFilterTextColor(
-                            selected_filter,
-                            'semua'
-                          ),
-                        },
-                      ],
-                      fontFamily: 'Poppins_400Regular',
-                      fontSize: 14,
-                    }
-                  ),
-                  dimensions.width
-                )}
-              >
-                {'Semua'}
-              </Text>
-            </View>
-          </Pressable>
-          {/* Pressable 2 */}
-          <Pressable
-            onPress={() => {
-              try {
-                setSelected_filter('xxi');
-                setShown_schedules(updateFilter(all_schedules, 'xxi'));
-              } catch (err) {
-                console.error(err);
-              }
-            }}
+              {'Braga City Walk Lt.2, Jl. Braga 99-101'}
+            </Text>
+          </View>
+          {/* map details 2 */}
+          <View
+            style={StyleSheet.applyWidth(
+              {
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                gap: 15,
+              },
+              dimensions.width
+            )}
           >
-            <View
+            <Icon
+              size={24}
+              color={theme.colors['Primary Color']}
+              name={'FontAwesome/phone'}
               style={StyleSheet.applyWidth(
-                {
-                  backgroundColor: selectedFilterColor('xxi', selected_filter),
-                  borderColor: 'rgb(189, 151, 89)',
-                  borderRadius: 5,
-                  borderWidth: 1,
-                  paddingBottom: 1,
-                  paddingLeft: 9,
-                  paddingRight: 9,
-                  paddingTop: 1,
-                },
+                { backgroundColor: 'rgba(0, 0, 0, 0)', marginLeft: 16 },
+                dimensions.width
+              )}
+            />
+            <Text
+              accessible={true}
+              {...GlobalStyles.TextStyles(theme)['Poppins'].props}
+              style={StyleSheet.applyWidth(
+                StyleSheet.compose(
+                  GlobalStyles.TextStyles(theme)['Poppins'].style,
+                  { color: theme.colors['Strong'] }
+                ),
                 dimensions.width
               )}
             >
-              <Text
-                accessible={true}
-                {...GlobalStyles.TextStyles(theme)['Text'].props}
-                style={StyleSheet.applyWidth(
-                  StyleSheet.compose(
-                    GlobalStyles.TextStyles(theme)['Text'].style,
-                    {
-                      alignSelf: 'center',
-                      color: [
-                        {
-                          minWidth: Breakpoints.Mobile,
-                          value: theme.colors['Background'],
-                        },
-                        {
-                          minWidth: Breakpoints.Mobile,
-                          value: selectedFilterTextColor(
-                            selected_filter,
-                            'xxi'
-                          ),
-                        },
-                      ],
-                      fontFamily: 'Poppins_400Regular',
-                      fontSize: 14,
-                    }
-                  ),
-                  dimensions.width
-                )}
-              >
-                {'XXI'}
-              </Text>
-            </View>
-          </Pressable>
-          {/* Pressable 4 */}
-          <Pressable
-            onPress={() => {
-              try {
-                setSelected_filter('the premiere');
-                setShown_schedules(updateFilter(all_schedules, 'the premiere'));
-              } catch (err) {
-                console.error(err);
-              }
-            }}
+              {'(022) 844 60121'}
+            </Text>
+          </View>
+          {/* View 3 */}
+          <View
+            style={StyleSheet.applyWidth(
+              {
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                marginTop: 20,
+              },
+              dimensions.width
+            )}
           >
-            <View
-              style={StyleSheet.applyWidth(
-                {
-                  backgroundColor: selectedFilterColor(
-                    'the premiere',
-                    selected_filter
-                  ),
-                  borderColor: 'rgb(189, 151, 89)',
-                  borderRadius: 5,
-                  borderWidth: 1,
-                  paddingBottom: 1,
-                  paddingLeft: 9,
-                  paddingRight: 9,
-                  paddingTop: 1,
-                },
-                dimensions.width
-              )}
+            {/* Pressable 2 */}
+            <Pressable
+              onPress={() => {
+                try {
+                  setIsToggled(!isToggled);
+                } catch (err) {
+                  console.error(err);
+                }
+              }}
             >
-              <Text
-                accessible={true}
-                {...GlobalStyles.TextStyles(theme)['Text'].props}
+              {/* small button */}
+              <View
                 style={StyleSheet.applyWidth(
-                  StyleSheet.compose(
-                    GlobalStyles.TextStyles(theme)['Text'].style,
-                    {
-                      alignSelf: 'center',
-                      color: [
-                        {
-                          minWidth: Breakpoints.Mobile,
-                          value: theme.colors['Background'],
-                        },
-                        {
-                          minWidth: Breakpoints.Mobile,
-                          value: selectedFilterTextColor(
-                            selected_filter,
-                            'the premiere'
-                          ),
-                        },
-                      ],
-                      fontFamily: 'Poppins_400Regular',
-                      fontSize: 14,
-                    }
-                  ),
+                  {
+                    backgroundColor: isToggled
+                      ? theme.colors['Secondary Color']
+                      : theme.colors['Surface'],
+                    borderColor: [
+                      {
+                        minWidth: Breakpoints.Mobile,
+                        value: theme.colors['Secondary Color'],
+                      },
+                      {
+                        minWidth: Breakpoints.Mobile,
+                        value: isToggled
+                          ? theme.colors['Surface']
+                          : theme.colors['Secondary Color'],
+                      },
+                    ],
+                    borderRadius: 10,
+                    borderWidth: 1,
+                    flexDirection: 'row',
+                    gap: 15,
+                    justifyContent: 'center',
+                    minWidth: 180,
+                    paddingBottom: 5,
+                    paddingLeft: 14,
+                    paddingRight: 14,
+                    paddingTop: 5,
+                  },
                   dimensions.width
                 )}
               >
-                {'The Premiere'}
-              </Text>
-            </View>
-          </Pressable>
-          {/* Pressable 3 */}
-          <Pressable
-            onPress={() => {
-              try {
-                setSelected_filter('imax');
-                setShown_schedules(updateFilter(all_schedules, 'imax'));
-              } catch (err) {
-                console.error(err);
-              }
-            }}
-          >
-            <View
-              style={StyleSheet.applyWidth(
-                {
-                  backgroundColor: selectedFilterColor('imax', selected_filter),
-                  borderColor: 'rgb(189, 151, 89)',
-                  borderRadius: 5,
-                  borderWidth: 1,
-                  paddingBottom: 1,
-                  paddingLeft: 9,
-                  paddingRight: 9,
-                  paddingTop: 1,
-                },
-                dimensions.width
-              )}
+                <Icon
+                  color={
+                    isToggled
+                      ? theme.colors['Surface']
+                      : theme.colors['Secondary Color']
+                  }
+                  name={'MaterialCommunityIcons/star-circle'}
+                  size={18}
+                />
+                <Text
+                  accessible={true}
+                  {...GlobalStyles.TextStyles(theme)['Text'].props}
+                  style={StyleSheet.applyWidth(
+                    StyleSheet.compose(
+                      GlobalStyles.TextStyles(theme)['Text'].style,
+                      {
+                        alignSelf: 'center',
+                        color: [
+                          {
+                            minWidth: Breakpoints.Mobile,
+                            value: theme.colors['Secondary Color'],
+                          },
+                          {
+                            minWidth: Breakpoints.Mobile,
+                            value: isToggled
+                              ? theme.colors['Surface']
+                              : theme.colors['Secondary Color'],
+                          },
+                        ],
+                        fontFamily: 'Poppins_500Medium',
+                        fontSize: 14,
+                        textAlign: 'center',
+                      }
+                    ),
+                    dimensions.width
+                  )}
+                >
+                  {isToggled ? 'In Favorites' : 'Add to Favorites'}
+                </Text>
+              </View>
+            </Pressable>
+
+            <Pressable
+              onPress={() => {
+                try {
+                  navigation.navigate('MfoodMenuPageScreen');
+                } catch (err) {
+                  console.error(err);
+                }
+              }}
             >
-              <Text
-                accessible={true}
-                {...GlobalStyles.TextStyles(theme)['Text'].props}
+              {/* small button 2 */}
+              <View
                 style={StyleSheet.applyWidth(
-                  StyleSheet.compose(
-                    GlobalStyles.TextStyles(theme)['Text'].style,
-                    {
-                      alignSelf: 'center',
-                      color: [
-                        {
-                          minWidth: Breakpoints.Mobile,
-                          value: theme.colors['Surface'],
-                        },
-                        {
-                          minWidth: Breakpoints.Mobile,
-                          value: selectedFilterTextColor(
-                            selected_filter,
-                            'imax'
-                          ),
-                        },
-                      ],
-                      fontFamily: 'Poppins_400Regular',
-                      fontSize: 14,
-                    }
-                  ),
+                  {
+                    borderColor: 'rgb(1, 83, 81)',
+                    borderRadius: 10,
+                    borderWidth: 1,
+                    flexDirection: 'row',
+                    gap: 15,
+                    minWidth: 180,
+                    paddingBottom: 5,
+                    paddingLeft: 14,
+                    paddingRight: 14,
+                    paddingTop: 5,
+                  },
                   dimensions.width
                 )}
               >
-                {'IMAX'}
-              </Text>
-            </View>
-          </Pressable>
+                <Icon
+                  color={theme.colors['Primary Color']}
+                  name={'MaterialCommunityIcons/food'}
+                  size={18}
+                />
+                <Text
+                  accessible={true}
+                  {...GlobalStyles.TextStyles(theme)['Text'].props}
+                  style={StyleSheet.applyWidth(
+                    StyleSheet.compose(
+                      GlobalStyles.TextStyles(theme)['Text'].style,
+                      {
+                        alignSelf: 'center',
+                        color: 'rgb(1, 83, 81)',
+                        fontFamily: 'Poppins_500Medium',
+                        fontSize: 14,
+                      }
+                    ),
+                    dimensions.width
+                  )}
+                >
+                  {'Order m.food'}
+                </Text>
+              </View>
+            </Pressable>
+          </View>
         </View>
+        <Divider
+          {...GlobalStyles.DividerStyles(theme)['Divider'].props}
+          color={theme.colors['Custom Color_7']}
+          style={StyleSheet.applyWidth(
+            StyleSheet.compose(
+              GlobalStyles.DividerStyles(theme)['Divider'].style,
+              { height: 6 }
+            ),
+            dimensions.width
+          )}
+        />
         <SimpleStyleFlatList
           data={shown_schedules}
           horizontal={false}
@@ -618,7 +472,7 @@ line two` ) and will not work with special characters inside of quotes ( example
             listData?.id ?? listData?.uuid ?? index.toString()
           }
           keyboardShouldPersistTaps={'never'}
-          listKey={'PQwHjIu8'}
+          listKey={'zF7hQYwb'}
           nestedScrollEnabled={false}
           numColumns={1}
           onEndReachedThreshold={0.5}
@@ -626,24 +480,132 @@ line two` ) and will not work with special characters inside of quotes ( example
             const listData = item;
             return (
               <>
-                {/* View 2 */}
+                {/* Movie Details */}
                 <View
                   style={StyleSheet.applyWidth(
                     {
                       backgroundColor: theme.colors['Surface'],
-                      gap: 0,
-                      paddingBottom: 10,
+                      flexDirection: 'row',
+                      gap: 35,
+                      paddingLeft: 16,
+                      paddingRight: 16,
                       paddingTop: 10,
                     },
                     dimensions.width
                   )}
                 >
-                  <View
+                  <Image
+                    resizeMode={'cover'}
+                    {...GlobalStyles.ImageStyles(theme)['Image'].props}
+                    source={{
+                      uri: 'https://cdn0-production-images-kly.akamaized.net/xCJgLGq2Sh43x0oVBpfGK9xlv6Y=/800x1066/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/4788070/original/025926800_1711640349-428258907_18296664022157327_6175042479492571650_n.jpg',
+                    }}
                     style={StyleSheet.applyWidth(
-                      { flexDirection: 'row', justifyContent: 'space-between' },
+                      StyleSheet.compose(
+                        GlobalStyles.ImageStyles(theme)['Image'].style,
+                        { borderRadius: 10, height: 175, width: 114 }
+                      ),
                       dimensions.width
                     )}
+                  />
+                  <View
+                    style={StyleSheet.applyWidth({ gap: 5 }, dimensions.width)}
                   >
+                    <Text
+                      accessible={true}
+                      {...GlobalStyles.TextStyles(theme)['Text'].props}
+                      style={StyleSheet.applyWidth(
+                        StyleSheet.compose(
+                          GlobalStyles.TextStyles(theme)['Text'].style,
+                          { fontFamily: 'Poppins_700Bold', fontSize: 18 }
+                        ),
+                        dimensions.width
+                      )}
+                    >
+                      {'VINA: SEBELUM 7 HARI'}
+                    </Text>
+                    {/* Category */}
+                    <View
+                      style={StyleSheet.applyWidth(
+                        {
+                          flexDirection: 'row',
+                          gap: 10,
+                          justifyContent: 'center',
+                        },
+                        dimensions.width
+                      )}
+                    >
+                      <View
+                        style={StyleSheet.applyWidth(
+                          {
+                            backgroundColor: 'rgb(189, 151, 89)',
+                            borderBottomLeftRadius: 5,
+                            borderBottomRightRadius: 5,
+                            borderTopLeftRadius: 5,
+                            borderTopRightRadius: 5,
+                            paddingBottom: 1,
+                            paddingLeft: 10,
+                            paddingRight: 10,
+                            paddingTop: 1,
+                          },
+                          dimensions.width
+                        )}
+                      >
+                        <Text
+                          accessible={true}
+                          {...GlobalStyles.TextStyles(theme)['Text'].props}
+                          style={StyleSheet.applyWidth(
+                            StyleSheet.compose(
+                              GlobalStyles.TextStyles(theme)['Text'].style,
+                              {
+                                color: theme.colors['Surface'],
+                                fontFamily: 'Poppins_700Bold',
+                                fontSize: 16,
+                              }
+                            ),
+                            dimensions.width
+                          )}
+                        >
+                          {'2D'}
+                        </Text>
+                      </View>
+                      {/* View 2 */}
+                      <View
+                        style={StyleSheet.applyWidth(
+                          {
+                            backgroundColor: 'rgb(189, 151, 89)',
+                            borderBottomLeftRadius: 5,
+                            borderBottomRightRadius: 5,
+                            borderTopLeftRadius: 5,
+                            borderTopRightRadius: 5,
+                            paddingBottom: 1,
+                            paddingLeft: 5,
+                            paddingRight: 5,
+                            paddingTop: 1,
+                          },
+                          dimensions.width
+                        )}
+                      >
+                        <Text
+                          accessible={true}
+                          {...GlobalStyles.TextStyles(theme)['Text'].props}
+                          style={StyleSheet.applyWidth(
+                            StyleSheet.compose(
+                              GlobalStyles.TextStyles(theme)['Text'].style,
+                              {
+                                color: theme.colors['Surface'],
+                                fontFamily: 'Poppins_700Bold',
+                                fontSize: 16,
+                              }
+                            ),
+                            dimensions.width
+                          )}
+                        >
+                          {'D17+'}
+                        </Text>
+                      </View>
+                    </View>
+                    {/* Genre */}
                     <Text
                       accessible={true}
                       {...GlobalStyles.TextStyles(theme)['Text'].props}
@@ -652,36 +614,51 @@ line two` ) and will not work with special characters inside of quotes ( example
                           GlobalStyles.TextStyles(theme)['Text'].style,
                           {
                             alignSelf: 'center',
-                            fontFamily: 'Poppins_700Bold',
-                            fontSize: 20,
+                            color: 'rgb(132, 132, 132)',
+                            fontSize: 16,
                           }
                         ),
                         dimensions.width
                       )}
                     >
-                      {listData?.cinema}
+                      {'Horror, Drama'}
                     </Text>
-
+                    {/* Rating */}
+                    <Text
+                      accessible={true}
+                      {...GlobalStyles.TextStyles(theme)['Text'].props}
+                      style={StyleSheet.applyWidth(
+                        StyleSheet.compose(
+                          GlobalStyles.TextStyles(theme)['Text'].style,
+                          {
+                            alignSelf: 'center',
+                            color: 'rgb(248, 193, 0)',
+                            fontFamily: 'Poppins_700Bold',
+                            fontSize: 18,
+                          }
+                        ),
+                        dimensions.width
+                      )}
+                    >
+                      {'★ 3,7'}
+                    </Text>
+                    {/* Duration */}
                     <View
                       style={StyleSheet.applyWidth(
                         {
-                          borderColor: 'rgb(1, 83, 81)',
-                          borderRadius: 10,
-                          borderWidth: 1,
+                          alignItems: 'stretch',
                           flexDirection: 'row',
-                          gap: 15,
-                          paddingBottom: 5,
-                          paddingLeft: 14,
-                          paddingRight: 14,
-                          paddingTop: 5,
+                          gap: 10,
+                          justifyContent: 'flex-start',
+                          marginTop: 35,
                         },
                         dimensions.width
                       )}
                     >
                       <Icon
                         color={theme.colors['Primary Color']}
-                        name={'MaterialCommunityIcons/food'}
-                        size={18}
+                        name={'MaterialCommunityIcons/clock-time-four'}
+                        size={22}
                       />
                       <Text
                         accessible={true}
@@ -690,19 +667,35 @@ line two` ) and will not work with special characters inside of quotes ( example
                           StyleSheet.compose(
                             GlobalStyles.TextStyles(theme)['Text'].style,
                             {
-                              alignSelf: 'center',
-                              color: 'rgb(1, 83, 81)',
-                              fontFamily: 'Poppins_500Medium',
+                              fontFamily: 'Poppins_400Regular',
                               fontSize: 14,
+                              textAlign: 'center',
                             }
                           ),
                           dimensions.width
                         )}
                       >
-                        {'Order m.food'}
+                        {'1 Hour 34 Minutes\n'}
                       </Text>
                     </View>
                   </View>
+                </View>
+                {/* View 2 */}
+                <View
+                  style={StyleSheet.applyWidth(
+                    {
+                      alignItems: 'stretch',
+                      backgroundColor: theme.colors['Surface'],
+                      gap: 0,
+                      justifyContent: 'center',
+                      marginTop: -5,
+                      paddingBottom: 10,
+                      paddingLeft: 16,
+                      paddingRight: 16,
+                    },
+                    dimensions.width
+                  )}
+                >
                   {/* View 2 */}
                   <View
                     style={StyleSheet.applyWidth(
@@ -1039,10 +1032,14 @@ line two` ) and will not work with special characters inside of quotes ( example
           showsHorizontalScrollIndicator={true}
           showsVerticalScrollIndicator={true}
           scrollEnabled={false}
+          style={StyleSheet.applyWidth(
+            { backgroundColor: theme.colors['Custom Color_7'], rowGap: 6 },
+            dimensions.width
+          )}
         />
       </SimpleStyleScrollView>
     </ScreenContainer>
   );
 };
 
-export default withTheme(MovieScheduleScreen);
+export default withTheme(TheaterMovieScreen);

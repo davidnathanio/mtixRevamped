@@ -296,7 +296,9 @@ const PurchaseDetailsScreen = props => {
                 dimensions.width
               )}
             >
-              {'Tiket (x)'}
+              {'Tiket ('}
+              {Constants['selected_history']?.selected_tickets?.length}
+              {')'}
             </Text>
             {/* View 4 */}
             <View

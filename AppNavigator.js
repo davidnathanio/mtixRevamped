@@ -25,6 +25,7 @@ import MyMtixScreen from './screens/MyMtixScreen';
 import PurchaseDetailsScreen from './screens/PurchaseDetailsScreen';
 import PurchaseHistoryScreen from './screens/PurchaseHistoryScreen';
 import ReviewPageScreen from './screens/ReviewPageScreen';
+import TheaterMovieScreen from './screens/TheaterMovieScreen';
 import TheaterScreen from './screens/TheaterScreen';
 import TicketConfirmOrderScreen from './screens/TicketConfirmOrderScreen';
 import UpComingScreen from './screens/UpComingScreen';
@@ -264,6 +265,14 @@ export default function RootAppNavigator() {
           options={({ navigation }) => ({
             headerShown: false,
             title: 'FAQ',
+          })}
+        />
+        <Stack.Screen
+          name="TheaterMovieScreen"
+          component={TheaterMovieScreen}
+          options={({ navigation }) => ({
+            headerShown: false,
+            title: 'Theater Movie Screen',
           })}
         />
         <Stack.Screen

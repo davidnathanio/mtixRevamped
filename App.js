@@ -39,10 +39,10 @@ const App = () => {
   const [areAssetsCached, setAreAssetsCached] = React.useState(false);
 
   const [fontsLoaded] = useFonts({
-    Poppins_700Bold: Fonts.Poppins_700Bold,
     Poppins_500Medium: Fonts.Poppins_500Medium,
     Poppins_400Regular: Fonts.Poppins_400Regular,
     Poppins_600SemiBold: Fonts.Poppins_600SemiBold,
+    Poppins_700Bold: Fonts.Poppins_700Bold,
     Poppins_800ExtraBold: Fonts.Poppins_800ExtraBold,
   });
 

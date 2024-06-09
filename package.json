@@ -18,6 +18,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@draftbit/maps": "49.5.1",
     "@draftbit/ui": "49.5.1",
     "@expo/dev-server": "0.5.5",
     "@expo/html-elements": "^0.5.1",

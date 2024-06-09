@@ -111,19 +111,6 @@ export const ButtonStyles = theme =>
     },
   });
 
-export const TextStyles = theme =>
-  StyleSheet.create({
-    Poppins: {
-      style: {
-        color: theme.colors.strong,
-        fontFamily: 'Poppins_400Regular',
-        textAlign: 'center',
-      },
-      props: {},
-    },
-    Text: { style: { color: theme.colors.strong }, props: {} },
-  });
-
 export const TableStyles = theme =>
   StyleSheet.create({ Table: { style: { flex: 1 }, props: {} } });
 
@@ -148,10 +135,50 @@ export const BottomSheetStyles = theme =>
 export const ModalStyles = theme =>
   StyleSheet.create({ paymentStylesheet: { style: {}, props: {} } });
 
-export const FetchStyles = theme =>
-  StyleSheet.create({ Fetch: { style: { minHeight: 40 }, props: {} } });
+export const MapViewStyles = theme =>
+  StyleSheet.create({
+    'Map View': {
+      style: { flex: 1, height: '100%', width: '100%' },
+      props: {},
+    },
+    'Map View 2': {
+      style: { flex: 1, height: '100%', width: '100%' },
+      props: {},
+    },
+  });
+
+export const TextStyles = theme =>
+  StyleSheet.create({
+    Poppins: {
+      style: {
+        color: theme.colors.strong,
+        fontFamily: 'Poppins_400Regular',
+        textAlign: 'center',
+      },
+      props: {},
+    },
+    Text: { style: { color: theme.colors.strong }, props: {} },
+    'Text 2': { style: { color: theme.colors.strong }, props: {} },
+  });
+
+export const ViewStyles = theme =>
+  StyleSheet.create({
+    'header action': {
+      style: {
+        alignItems: 'center',
+        height: 48,
+        justifyContent: 'center',
+        width: 48,
+      },
+      props: {},
+    },
+  });
 
 export const ImageStyles = theme =>
   StyleSheet.create({
     Image: { style: { height: 100, width: 100 }, props: {} },
+    'Image 2': { style: { height: 100, width: 100 }, props: {} },
   });
+
+export const FetchStyles = theme =>
+  StyleSheet.create({ Fetch: { style: { minHeight: 40 }, props: {} } });

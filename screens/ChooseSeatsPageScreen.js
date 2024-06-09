@@ -167,10 +167,12 @@ line two` ) and will not work with special characters inside of quotes ( example
         selectedSeats.splice(seatIndex, 1);
       } else {
         // Seat is not selected, so add it
-        selectedSeats.push(seat);
+        if (selectedSeats.length < 8) {
+          selectedSeats.push(seat);
+        }
       }
     }
-    console.log('ini di selectSeat', selectedSeats);
+
     return selectedSeats;
   };
 
@@ -420,7 +422,7 @@ line two` ) and will not work with special characters inside of quotes ( example
           <View
             style={StyleSheet.applyWidth(
               {
-                backgroundColor: theme.colors['Rating'],
+                backgroundColor: theme.colors['Secondary Color'],
                 height: 16,
                 width: 16,
               },
@@ -523,7 +525,7 @@ line two` ) and will not work with special characters inside of quotes ( example
         nestedScrollEnabled={false}
         bounces={true}
         horizontal={true}
-        showsHorizontalScrollIndicator={false}
+        showsHorizontalScrollIndicator={true}
         showsVerticalScrollIndicator={true}
         style={StyleSheet.applyWidth(
           { flexDirection: 'row', flexWrap: 'wrap', width: '100%' },
@@ -537,7 +539,7 @@ line two` ) and will not work with special characters inside of quotes ( example
               alignContent: 'flex-start',
               flexDirection: 'column',
               flexWrap: 'wrap',
-              width: 580,
+              width: 650,
             },
             dimensions.width
           )}
@@ -593,9 +595,9 @@ line two` ) and will not work with special characters inside of quotes ( example
                                   ),
                                 },
                               ],
-                              height: 32,
+                              height: 36,
                               justifyContent: 'center',
-                              width: 32,
+                              width: 36,
                             },
                             dimensions.width
                           )}
@@ -606,7 +608,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                             style={StyleSheet.applyWidth(
                               StyleSheet.compose(
                                 GlobalStyles.TextStyles(theme)['Poppins'].style,
-                                { color: theme.colors['Surface'], fontSize: 14 }
+                                { color: theme.colors['Surface'], fontSize: 16 }
                               ),
                               dimensions.width
                             )}
@@ -632,7 +634,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                           style={StyleSheet.applyWidth(
                             StyleSheet.compose(
                               GlobalStyles.TextStyles(theme)['Poppins'].style,
-                              { fontFamily: 'Poppins_700Bold', fontSize: 16 }
+                              { fontFamily: 'Poppins_700Bold', fontSize: 18 }
                             ),
                             dimensions.width
                           )}
@@ -725,8 +727,13 @@ line two` ) and will not work with special characters inside of quotes ( example
             dimensions.width
           )}
         >
-          {/* quantity */}
-          <View>
+          {/* price */}
+          <View
+            style={StyleSheet.applyWidth(
+              { flexWrap: 'nowrap' },
+              dimensions.width
+            )}
+          >
             <Text
               accessible={true}
               {...GlobalStyles.TextStyles(theme)['Poppins'].props}
@@ -757,8 +764,13 @@ line two` ) and will not work with special characters inside of quotes ( example
               {selectedSeatsToPrice(Constants['selected_seats'])}
             </Text>
           </View>
-          {/* price */}
-          <View>
+          {/* seat */}
+          <View
+            style={StyleSheet.applyWidth(
+              { flexWrap: 'wrap' },
+              dimensions.width
+            )}
+          >
             <Text
               accessible={true}
               {...GlobalStyles.TextStyles(theme)['Poppins'].props}
@@ -769,24 +781,37 @@ line two` ) and will not work with special characters inside of quotes ( example
             >
               {'Tempat Duduk'}
             </Text>
-            {/* Text 2 */}
-            <Text
-              accessible={true}
-              {...GlobalStyles.TextStyles(theme)['Poppins'].props}
+
+            <View
               style={StyleSheet.applyWidth(
-                StyleSheet.compose(
-                  GlobalStyles.TextStyles(theme)['Poppins'].style,
-                  {
-                    color: theme.colors['Primary Color'],
-                    fontFamily: 'Poppins_700Bold',
-                    fontSize: 16,
-                  }
-                ),
+                {
+                  alignContent: 'center',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  maxWidth: 120,
+                },
                 dimensions.width
               )}
             >
-              {selectedSeatsToString(Constants['selected_seats'])}
-            </Text>
+              {/* Text 2 */}
+              <Text
+                accessible={true}
+                {...GlobalStyles.TextStyles(theme)['Poppins'].props}
+                style={StyleSheet.applyWidth(
+                  StyleSheet.compose(
+                    GlobalStyles.TextStyles(theme)['Poppins'].style,
+                    {
+                      color: theme.colors['Primary Color'],
+                      fontFamily: 'Poppins_700Bold',
+                      fontSize: 16,
+                    }
+                  ),
+                  dimensions.width
+                )}
+              >
+                {selectedSeatsToString(Constants['selected_seats'])}
+              </Text>
+            </View>
           </View>
         </View>
         {/* Button */}
