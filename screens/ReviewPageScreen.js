@@ -128,11 +128,11 @@ line two` ) and will not work with special characters inside of quotes ( example
       hasSafeArea={false}
       hasTopSafeArea={true}
     >
-      {/* header */}
+      {/* header fix */}
       <View
         style={StyleSheet.applyWidth(
           {
-            alignContent: 'center',
+            alignContent: 'flex-start',
             alignItems: 'flex-start',
             alignSelf: 'auto',
             backgroundColor: 'rgb(1, 83, 81)',
@@ -145,36 +145,43 @@ line two` ) and will not work with special characters inside of quotes ( example
           dimensions.width
         )}
       >
-        <Pressable
-          onPress={() => {
-            try {
-              navigation.goBack();
-            } catch (err) {
-              console.error(err);
-            }
-          }}
+        <View
+          style={StyleSheet.applyWidth(
+            { position: 'absolute', zIndex: 2 },
+            dimensions.width
+          )}
         >
-          <View
-            style={StyleSheet.applyWidth(
-              {
-                alignItems: 'center',
-                alignSelf: 'flex-start',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                marginLeft: 16,
-                position: 'absolute',
-                zIndex: 1,
-              },
-              dimensions.width
-            )}
+          <Pressable
+            onPress={() => {
+              try {
+                navigation.goBack();
+              } catch (err) {
+                console.error(err);
+              }
+            }}
           >
-            <Icon
-              size={24}
-              color={theme.colors['Surface']}
-              name={'MaterialIcons/arrow-back'}
-            />
-          </View>
-        </Pressable>
+            <View
+              style={StyleSheet.applyWidth(
+                {
+                  alignItems: 'center',
+                  alignSelf: 'flex-start',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  marginLeft: 16,
+                  position: 'relative',
+                  top: 15,
+                },
+                dimensions.width
+              )}
+            >
+              <Icon
+                size={24}
+                color={theme.colors['Surface']}
+                name={'MaterialIcons/arrow-back'}
+              />
+            </View>
+          </Pressable>
+        </View>
         {/* Daftar Film */}
         <Text
           accessible={true}

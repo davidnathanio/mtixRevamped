@@ -96,7 +96,6 @@ line two` ) and will not work with special characters inside of quotes ( example
             backgroundColor: 'rgb(1, 83, 81)',
             flexDirection: 'row',
             flexWrap: 'nowrap',
-            height: 49,
             justifyContent: 'flex-start',
             paddingBottom: 12,
             paddingTop: 13,
@@ -106,7 +105,7 @@ line two` ) and will not work with special characters inside of quotes ( example
       >
         <View
           style={StyleSheet.applyWidth(
-            { position: 'absolute', zIndex: 2 },
+            { position: 'absolute', top: 15, zIndex: 2 },
             dimensions.width
           )}
         >
@@ -931,7 +930,9 @@ line two` ) and will not work with special characters inside of quotes ( example
                     Constants['selected_seats']
                   ),
                 });
-                navigation.navigate('PurchaseHistoryScreen');
+                navigation.navigate('BottomTabNavigator', {
+                  screen: 'HomepageScreen',
+                });
               } catch (err) {
                 console.error(err);
               }

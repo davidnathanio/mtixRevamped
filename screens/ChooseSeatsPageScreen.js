@@ -525,63 +525,104 @@ line two` ) and will not work with special characters inside of quotes ( example
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={true}
-        style={StyleSheet.applyWidth({ flexWrap: 'wrap' }, dimensions.width)}
+        style={StyleSheet.applyWidth(
+          { flexDirection: 'row', flexWrap: 'wrap', width: '100%' },
+          dimensions.width
+        )}
       >
-        <SimpleStyleFlatList
-          data={seats}
-          inverted={false}
-          keyExtractor={(listData, index) =>
-            listData?.id ?? listData?.uuid ?? index.toString()
-          }
-          keyboardShouldPersistTaps={'never'}
-          listKey={'B98h5q9v'}
-          nestedScrollEnabled={false}
-          numColumns={1}
-          onEndReachedThreshold={0.5}
-          renderItem={({ item, index }) => {
-            const listData = item;
-            return (
-              <>
+        {/* View 2 */}
+        <View
+          style={StyleSheet.applyWidth(
+            {
+              alignContent: 'flex-start',
+              flexDirection: 'column',
+              flexWrap: 'wrap',
+              width: 580,
+            },
+            dimensions.width
+          )}
+        >
+          <SimpleStyleFlatList
+            data={seats}
+            inverted={false}
+            keyExtractor={(listData, index) =>
+              listData?.id ?? listData?.uuid ?? index.toString()
+            }
+            keyboardShouldPersistTaps={'never'}
+            listKey={'B98h5q9v'}
+            nestedScrollEnabled={false}
+            numColumns={1}
+            onEndReachedThreshold={0.5}
+            renderItem={({ item, index }) => {
+              const listData = item;
+              return (
                 <>
-                  {!(listData?.type !== 'label') ? null : (
-                    <Pressable
-                      onPress={() => {
-                        try {
-                          setGlobalVariableValue({
-                            key: 'selected_seats',
-                            value: selectSeat(
-                              Constants['selected_seats'],
-                              seats,
-                              listData?.label
-                            ),
-                          });
-                        } catch (err) {
-                          console.error(err);
-                        }
-                      }}
-                    >
-                      {/* View 2 */}
+                  <>
+                    {!(listData?.type !== 'label') ? null : (
+                      <Pressable
+                        onPress={() => {
+                          try {
+                            setGlobalVariableValue({
+                              key: 'selected_seats',
+                              value: selectSeat(
+                                Constants['selected_seats'],
+                                seats,
+                                listData?.label
+                              ),
+                            });
+                          } catch (err) {
+                            console.error(err);
+                          }
+                        }}
+                      >
+                        {/* View 2 */}
+                        <View
+                          style={StyleSheet.applyWidth(
+                            {
+                              backgroundColor: [
+                                {
+                                  minWidth: Breakpoints.Mobile,
+                                  value: theme.colors['Primary Color'],
+                                },
+                                {
+                                  minWidth: Breakpoints.Mobile,
+                                  value: selectedSeatsColor(
+                                    Constants['selected_seats'],
+                                    seats,
+                                    listData?.label
+                                  ),
+                                },
+                              ],
+                              height: 32,
+                              justifyContent: 'center',
+                              width: 32,
+                            },
+                            dimensions.width
+                          )}
+                        >
+                          <Text
+                            accessible={true}
+                            {...GlobalStyles.TextStyles(theme)['Poppins'].props}
+                            style={StyleSheet.applyWidth(
+                              StyleSheet.compose(
+                                GlobalStyles.TextStyles(theme)['Poppins'].style,
+                                { color: theme.colors['Surface'], fontSize: 14 }
+                              ),
+                              dimensions.width
+                            )}
+                          >
+                            {listData?.label}
+                          </Text>
+                        </View>
+                      </Pressable>
+                    )}
+                  </>
+                  {/* Seats Label */}
+                  <>
+                    {!(listData?.type === 'label') ? null : (
                       <View
                         style={StyleSheet.applyWidth(
-                          {
-                            backgroundColor: [
-                              {
-                                minWidth: Breakpoints.Mobile,
-                                value: theme.colors['Primary Color'],
-                              },
-                              {
-                                minWidth: Breakpoints.Mobile,
-                                value: selectedSeatsColor(
-                                  Constants['selected_seats'],
-                                  seats,
-                                  listData?.label
-                                ),
-                              },
-                            ],
-                            height: 24,
-                            justifyContent: 'center',
-                            width: 24,
-                          },
+                          { paddingLeft: 20, paddingRight: 20 },
                           dimensions.width
                         )}
                       >
@@ -591,7 +632,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                           style={StyleSheet.applyWidth(
                             StyleSheet.compose(
                               GlobalStyles.TextStyles(theme)['Poppins'].style,
-                              { color: theme.colors['Surface'], fontSize: 12 }
+                              { fontFamily: 'Poppins_700Bold', fontSize: 16 }
                             ),
                             dimensions.width
                           )}
@@ -599,55 +640,29 @@ line two` ) and will not work with special characters inside of quotes ( example
                           {listData?.label}
                         </Text>
                       </View>
-                    </Pressable>
-                  )}
+                    )}
+                  </>
                 </>
-                {/* Seats Label */}
-                <>
-                  {!(listData?.type === 'label') ? null : (
-                    <View
-                      style={StyleSheet.applyWidth(
-                        { paddingLeft: 20, paddingRight: 20 },
-                        dimensions.width
-                      )}
-                    >
-                      <Text
-                        accessible={true}
-                        {...GlobalStyles.TextStyles(theme)['Poppins'].props}
-                        style={StyleSheet.applyWidth(
-                          StyleSheet.compose(
-                            GlobalStyles.TextStyles(theme)['Poppins'].style,
-                            { fontFamily: 'Poppins_700Bold' }
-                          ),
-                          dimensions.width
-                        )}
-                      >
-                        {listData?.label}
-                      </Text>
-                    </View>
-                  )}
-                </>
-              </>
-            );
-          }}
-          showsHorizontalScrollIndicator={true}
-          showsVerticalScrollIndicator={true}
-          horizontal={true}
-          style={StyleSheet.applyWidth(
-            {
-              alignContent: 'flex-start',
-              alignItems: 'stretch',
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              gap: 8,
-              marginBottom: 30,
-              paddingLeft: 16,
-              paddingRight: 16,
-              width: 300,
-            },
-            dimensions.width
-          )}
-        />
+              );
+            }}
+            showsHorizontalScrollIndicator={true}
+            showsVerticalScrollIndicator={true}
+            horizontal={false}
+            style={StyleSheet.applyWidth(
+              {
+                alignContent: 'flex-start',
+                alignItems: 'stretch',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                gap: 8,
+                marginBottom: 30,
+                paddingLeft: 16,
+                paddingRight: 16,
+              },
+              dimensions.width
+            )}
+          />
+        </View>
       </SimpleStyleScrollView>
       {/* Divider 2 */}
       <Divider
@@ -727,7 +742,14 @@ line two` ) and will not work with special characters inside of quotes ( example
               accessible={true}
               {...GlobalStyles.TextStyles(theme)['Poppins'].props}
               style={StyleSheet.applyWidth(
-                GlobalStyles.TextStyles(theme)['Poppins'].style,
+                StyleSheet.compose(
+                  GlobalStyles.TextStyles(theme)['Poppins'].style,
+                  {
+                    color: theme.colors['Primary Color'],
+                    fontFamily: 'Poppins_700Bold',
+                    fontSize: 18,
+                  }
+                ),
                 dimensions.width
               )}
             >
@@ -752,7 +774,14 @@ line two` ) and will not work with special characters inside of quotes ( example
               accessible={true}
               {...GlobalStyles.TextStyles(theme)['Poppins'].props}
               style={StyleSheet.applyWidth(
-                GlobalStyles.TextStyles(theme)['Poppins'].style,
+                StyleSheet.compose(
+                  GlobalStyles.TextStyles(theme)['Poppins'].style,
+                  {
+                    color: theme.colors['Primary Color'],
+                    fontFamily: 'Poppins_700Bold',
+                    fontSize: 16,
+                  }
+                ),
                 dimensions.width
               )}
             >

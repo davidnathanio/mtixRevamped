@@ -2,8 +2,8 @@ import React from 'react';
 import * as GlobalStyles from '../GlobalStyles.js';
 import * as GlobalVariables from '../config/GlobalVariableContext';
 import intToPrice from '../global-functions/intToPrice';
-import selectedFilterColorG from '../global-functions/selectedFilterColorG';
-import selectedFilterTextColorG from '../global-functions/selectedFilterTextColorG';
+import selectedFilterColorGlobal from '../global-functions/selectedFilterColorGlobal';
+import selectedFilterTextColorGlobal from '../global-functions/selectedFilterTextColorGlobal';
 import Breakpoints from '../utils/Breakpoints';
 import * as StyleSheet from '../utils/StyleSheet';
 import useWindowDimensions from '../utils/useWindowDimensions';
@@ -427,7 +427,10 @@ line two` ) and will not work with special characters inside of quotes ( example
                     },
                     {
                       minWidth: Breakpoints.Mobile,
-                      value: selectedFilterColorG('semua', selected_filter),
+                      value: selectedFilterColorGlobal(
+                        'semua',
+                        selected_filter
+                      ),
                     },
                   ],
                   borderColor: 'rgb(189, 151, 89)',
@@ -456,7 +459,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                         },
                         {
                           minWidth: Breakpoints.Mobile,
-                          value: selectedFilterTextColorG(
+                          value: selectedFilterTextColorGlobal(
                             'semua',
                             selected_filter
                           ),
@@ -494,7 +497,10 @@ line two` ) and will not work with special characters inside of quotes ( example
                     },
                     {
                       minWidth: Breakpoints.Mobile,
-                      value: selectedFilterColorG('promo', selected_filter),
+                      value: selectedFilterColorGlobal(
+                        'promo',
+                        selected_filter
+                      ),
                     },
                   ],
                   borderColor: 'rgb(189, 151, 89)',
@@ -523,7 +529,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                         },
                         {
                           minWidth: Breakpoints.Mobile,
-                          value: selectedFilterTextColorG(
+                          value: selectedFilterTextColorGlobal(
                             'promo',
                             selected_filter
                           ),
@@ -561,7 +567,10 @@ line two` ) and will not work with special characters inside of quotes ( example
                     },
                     {
                       minWidth: Breakpoints.Mobile,
-                      value: selectedFilterColorG('combo', selected_filter),
+                      value: selectedFilterColorGlobal(
+                        'combo',
+                        selected_filter
+                      ),
                     },
                   ],
                   borderColor: 'rgb(189, 151, 89)',
@@ -590,7 +599,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                         },
                         {
                           minWidth: Breakpoints.Mobile,
-                          value: selectedFilterTextColorG(
+                          value: selectedFilterTextColorGlobal(
                             'combo',
                             selected_filter
                           ),
@@ -628,7 +637,10 @@ line two` ) and will not work with special characters inside of quotes ( example
                     },
                     {
                       minWidth: Breakpoints.Mobile,
-                      value: selectedFilterColorG('popcorn', selected_filter),
+                      value: selectedFilterColorGlobal(
+                        'popcorn',
+                        selected_filter
+                      ),
                     },
                   ],
                   borderColor: 'rgb(189, 151, 89)',
@@ -657,7 +669,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                         },
                         {
                           minWidth: Breakpoints.Mobile,
-                          value: selectedFilterTextColorG(
+                          value: selectedFilterTextColorGlobal(
                             'popcorn',
                             selected_filter
                           ),
@@ -695,7 +707,10 @@ line two` ) and will not work with special characters inside of quotes ( example
                     },
                     {
                       minWidth: Breakpoints.Mobile,
-                      value: selectedFilterColorG('fritters', selected_filter),
+                      value: selectedFilterColorGlobal(
+                        'fritters',
+                        selected_filter
+                      ),
                     },
                   ],
                   borderColor: 'rgb(189, 151, 89)',
@@ -724,7 +739,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                         },
                         {
                           minWidth: Breakpoints.Mobile,
-                          value: selectedFilterTextColorG(
+                          value: selectedFilterTextColorGlobal(
                             'fritters',
                             selected_filter
                           ),
@@ -762,7 +777,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                     },
                     {
                       minWidth: Breakpoints.Mobile,
-                      value: selectedFilterColorG(
+                      value: selectedFilterColorGlobal(
                         'light meal',
                         selected_filter
                       ),
@@ -795,7 +810,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                         },
                         {
                           minWidth: Breakpoints.Mobile,
-                          value: selectedFilterTextColorG(
+                          value: selectedFilterTextColorGlobal(
                             'light meal',
                             selected_filter
                           ),
@@ -835,7 +850,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                     },
                     {
                       minWidth: Breakpoints.Mobile,
-                      value: selectedFilterColorG(
+                      value: selectedFilterColorGlobal(
                         'bakery & pastry',
                         selected_filter
                       ),
@@ -868,7 +883,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                         },
                         {
                           minWidth: Breakpoints.Mobile,
-                          value: selectedFilterTextColorG(
+                          value: selectedFilterTextColorGlobal(
                             'bakery & pastry',
                             selected_filter
                           ),
@@ -906,7 +921,10 @@ line two` ) and will not work with special characters inside of quotes ( example
                     },
                     {
                       minWidth: Breakpoints.Mobile,
-                      value: selectedFilterColorG('drinks', selected_filter),
+                      value: selectedFilterColorGlobal(
+                        'drinks',
+                        selected_filter
+                      ),
                     },
                   ],
                   borderColor: 'rgb(189, 151, 89)',
@@ -936,7 +954,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                         },
                         {
                           minWidth: Breakpoints.Mobile,
-                          value: selectedFilterTextColorG(
+                          value: selectedFilterTextColorGlobal(
                             'drinks',
                             selected_filter
                           ),

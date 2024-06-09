@@ -437,7 +437,7 @@ const HomepageScreen = props => {
                   {/* Movie Details */}
                   <View
                     style={StyleSheet.applyWidth(
-                      { gap: 5, maxWidth: 200 },
+                      { gap: 5, maxWidth: 180 },
                       dimensions.width
                     )}
                   >

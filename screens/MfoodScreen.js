@@ -3,8 +3,8 @@ import * as GlobalStyles from '../GlobalStyles.js';
 import CityLocationBlock from '../components/CityLocationBlock';
 import * as GlobalVariables from '../config/GlobalVariableContext';
 import Images from '../config/Images';
-import selectedFilterColorG from '../global-functions/selectedFilterColorG';
-import selectedFilterTextColorG from '../global-functions/selectedFilterTextColorG';
+import selectedFilterColorGlobal from '../global-functions/selectedFilterColorGlobal';
+import selectedFilterTextColorGlobal from '../global-functions/selectedFilterTextColorGlobal';
 import Breakpoints from '../utils/Breakpoints';
 import * as StyleSheet from '../utils/StyleSheet';
 import useWindowDimensions from '../utils/useWindowDimensions';
@@ -20,7 +20,7 @@ import {
 import { Image, Text, View } from 'react-native';
 
 const MfoodScreen = props => {
-  const { theme } = props;
+  const { theme, navigation } = props;
   const dimensions = useWindowDimensions();
   const Constants = GlobalVariables.useValues();
   const Variables = Constants;
@@ -68,6 +68,14 @@ line two` ) and will not work with special characters inside of quotes ( example
     return searchedTheater.filter(
       theaters => filterValue == 'semua' || theaters.type == filterValue
     );
+  };
+
+  const pressTheater = theaterName => {
+    if (theaterName == 'BRAGA XXI') {
+      return true;
+    } else {
+      return false;
+    }
   };
 
   return (
@@ -201,7 +209,10 @@ line two` ) and will not work with special characters inside of quotes ( example
                   { minWidth: Breakpoints.Mobile, value: 'rgb(255, 255, 255)' },
                   {
                     minWidth: Breakpoints.Mobile,
-                    value: selectedFilterColorG('favorites', selected_filter),
+                    value: selectedFilterColorGlobal(
+                      'favorites',
+                      selected_filter
+                    ),
                   },
                 ],
                 borderColor: 'rgb(189, 151, 89)',
@@ -231,7 +242,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                       },
                       {
                         minWidth: Breakpoints.Mobile,
-                        value: selectedFilterTextColorG(
+                        value: selectedFilterTextColorGlobal(
                           'favorites',
                           selected_filter
                         ),
@@ -268,7 +279,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                   { minWidth: Breakpoints.Mobile, value: 'rgb(255, 255, 255)' },
                   {
                     minWidth: Breakpoints.Mobile,
-                    value: selectedFilterColorG('semua', selected_filter),
+                    value: selectedFilterColorGlobal('semua', selected_filter),
                   },
                 ],
                 borderColor: 'rgb(189, 151, 89)',
@@ -298,7 +309,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                       },
                       {
                         minWidth: Breakpoints.Mobile,
-                        value: selectedFilterTextColorG(
+                        value: selectedFilterTextColorGlobal(
                           'semua',
                           selected_filter
                         ),
@@ -331,7 +342,10 @@ line two` ) and will not work with special characters inside of quotes ( example
           <View
             style={StyleSheet.applyWidth(
               {
-                backgroundColor: selectedFilterColorG('xxi', selected_filter),
+                backgroundColor: selectedFilterColorGlobal(
+                  'xxi',
+                  selected_filter
+                ),
                 borderColor: 'rgb(189, 151, 89)',
                 borderRadius: 5,
                 borderWidth: 1,
@@ -358,7 +372,10 @@ line two` ) and will not work with special characters inside of quotes ( example
                       },
                       {
                         minWidth: Breakpoints.Mobile,
-                        value: selectedFilterTextColorG('xxi', selected_filter),
+                        value: selectedFilterTextColorGlobal(
+                          'xxi',
+                          selected_filter
+                        ),
                       },
                     ],
                     fontFamily: 'Poppins_400Regular',
@@ -388,7 +405,7 @@ line two` ) and will not work with special characters inside of quotes ( example
           <View
             style={StyleSheet.applyWidth(
               {
-                backgroundColor: selectedFilterColorG(
+                backgroundColor: selectedFilterColorGlobal(
                   'the premiere',
                   selected_filter
                 ),
@@ -418,7 +435,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                       },
                       {
                         minWidth: Breakpoints.Mobile,
-                        value: selectedFilterTextColorG(
+                        value: selectedFilterTextColorGlobal(
                           'the premiere',
                           selected_filter
                         ),
@@ -451,7 +468,10 @@ line two` ) and will not work with special characters inside of quotes ( example
           <View
             style={StyleSheet.applyWidth(
               {
-                backgroundColor: selectedFilterColorG('imax', selected_filter),
+                backgroundColor: selectedFilterColorGlobal(
+                  'imax',
+                  selected_filter
+                ),
                 borderColor: 'rgb(189, 151, 89)',
                 borderRadius: 5,
                 borderWidth: 1,
@@ -478,7 +498,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                       },
                       {
                         minWidth: Breakpoints.Mobile,
-                        value: selectedFilterTextColorG(
+                        value: selectedFilterTextColorGlobal(
                           'imax',
                           selected_filter
                         ),
@@ -524,56 +544,68 @@ line two` ) and will not work with special characters inside of quotes ( example
           renderItem={({ item, index }) => {
             const listData = item;
             return (
-              <View
-                style={StyleSheet.applyWidth(
-                  {
-                    alignItems: 'center',
-                    borderBottomWidth: 1,
-                    flexDirection: 'row',
-                    gap: 25,
-                    paddingBottom: 15,
-                    paddingTop: 15,
-                  },
-                  dimensions.width
-                )}
+              <Pressable
+                onPress={() => {
+                  try {
+                    if (pressTheater(listData?.theater)) {
+                      navigation.navigate('MfoodMenuPageScreen');
+                    }
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
               >
-                <Image
-                  resizeMode={'cover'}
-                  {...GlobalStyles.ImageStyles(theme)['Image'].props}
-                  source={Images.Image20}
+                <View
                   style={StyleSheet.applyWidth(
-                    StyleSheet.compose(
-                      GlobalStyles.ImageStyles(theme)['Image'].style,
-                      { height: 35, width: 35 }
-                    ),
-                    dimensions.width
-                  )}
-                />
-                <Text
-                  accessible={true}
-                  {...GlobalStyles.TextStyles(theme)['Poppins'].props}
-                  style={StyleSheet.applyWidth(
-                    StyleSheet.compose(
-                      GlobalStyles.TextStyles(theme)['Poppins'].style,
-                      {
-                        color: theme.colors['Text'],
-                        flex: 1,
-                        fontFamily: 'Poppins_500Medium',
-                        fontSize: 18,
-                        textAlign: 'left',
-                      }
-                    ),
+                    {
+                      alignItems: 'center',
+                      borderBottomWidth: 1,
+                      flexDirection: 'row',
+                      gap: 25,
+                      paddingBottom: 15,
+                      paddingTop: 15,
+                    },
                     dimensions.width
                   )}
                 >
-                  {listData?.theater}
-                </Text>
-                <Icon
-                  size={24}
-                  color={theme.colors['Text']}
-                  name={'Entypo/chevron-right'}
-                />
-              </View>
+                  <Image
+                    resizeMode={'cover'}
+                    {...GlobalStyles.ImageStyles(theme)['Image'].props}
+                    source={Images.Image20}
+                    style={StyleSheet.applyWidth(
+                      StyleSheet.compose(
+                        GlobalStyles.ImageStyles(theme)['Image'].style,
+                        { height: 35, width: 35 }
+                      ),
+                      dimensions.width
+                    )}
+                  />
+                  <Text
+                    accessible={true}
+                    {...GlobalStyles.TextStyles(theme)['Poppins'].props}
+                    style={StyleSheet.applyWidth(
+                      StyleSheet.compose(
+                        GlobalStyles.TextStyles(theme)['Poppins'].style,
+                        {
+                          color: theme.colors['Text'],
+                          flex: 1,
+                          fontFamily: 'Poppins_500Medium',
+                          fontSize: 18,
+                          textAlign: 'left',
+                        }
+                      ),
+                      dimensions.width
+                    )}
+                  >
+                    {listData?.theater}
+                  </Text>
+                  <Icon
+                    size={24}
+                    color={theme.colors['Text']}
+                    name={'Entypo/chevron-right'}
+                  />
+                </View>
+              </Pressable>
             );
           }}
           showsHorizontalScrollIndicator={true}

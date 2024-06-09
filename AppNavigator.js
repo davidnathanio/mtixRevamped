@@ -24,7 +24,6 @@ import MovieScheduleScreen from './screens/MovieScheduleScreen';
 import MyMtixScreen from './screens/MyMtixScreen';
 import PurchaseDetailsScreen from './screens/PurchaseDetailsScreen';
 import PurchaseHistoryScreen from './screens/PurchaseHistoryScreen';
-import RestaurantDetailsScreen from './screens/RestaurantDetailsScreen';
 import ReviewPageScreen from './screens/ReviewPageScreen';
 import TheaterScreen from './screens/TheaterScreen';
 import TicketConfirmOrderScreen from './screens/TicketConfirmOrderScreen';
@@ -185,14 +184,6 @@ export default function RootAppNavigator() {
           options={({ navigation }) => ({
             headerShown: false,
             title: 'Movie Schedule',
-          })}
-        />
-        <Stack.Screen
-          name="RestaurantDetailsScreen"
-          component={RestaurantDetailsScreen}
-          options={({ navigation }) => ({
-            headerShown: false,
-            title: 'Restaurant Details',
           })}
         />
         <Stack.Screen

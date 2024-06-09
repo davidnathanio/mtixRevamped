@@ -37,7 +37,6 @@ const PurchaseHistoryScreen = props => {
             backgroundColor: 'rgb(1, 83, 81)',
             flexDirection: 'row',
             flexWrap: 'nowrap',
-            height: 49,
             justifyContent: 'flex-start',
             paddingBottom: 12,
             paddingTop: 13,
@@ -47,7 +46,7 @@ const PurchaseHistoryScreen = props => {
       >
         <View
           style={StyleSheet.applyWidth(
-            { position: 'absolute', zIndex: 2 },
+            { position: 'absolute', top: 15, zIndex: 2 },
             dimensions.width
           )}
         >
@@ -100,52 +99,6 @@ const PurchaseHistoryScreen = props => {
           {'Purchase History'}
         </Text>
       </View>
-
-      <View
-        style={StyleSheet.applyWidth(
-          { flexDirection: 'row' },
-          dimensions.width
-        )}
-      >
-        {/* View 2 */}
-        <View style={StyleSheet.applyWidth({ flex: 1 }, dimensions.width)}>
-          <Text
-            accessible={true}
-            {...GlobalStyles.TextStyles(theme)['Poppins'].props}
-            style={StyleSheet.applyWidth(
-              GlobalStyles.TextStyles(theme)['Poppins'].style,
-              dimensions.width
-            )}
-          >
-            {'Ticket'}
-          </Text>
-        </View>
-        {/* View 3 */}
-        <View style={StyleSheet.applyWidth({ flex: 1 }, dimensions.width)}>
-          <Text
-            accessible={true}
-            {...GlobalStyles.TextStyles(theme)['Poppins'].props}
-            style={StyleSheet.applyWidth(
-              GlobalStyles.TextStyles(theme)['Poppins'].style,
-              dimensions.width
-            )}
-          >
-            {'XXI Cafe'}
-          </Text>
-        </View>
-      </View>
-      {/* Divider 2 */}
-      <Divider
-        {...GlobalStyles.DividerStyles(theme)['Divider'].props}
-        color={theme.colors['Light']}
-        style={StyleSheet.applyWidth(
-          StyleSheet.compose(
-            GlobalStyles.DividerStyles(theme)['Divider'].style,
-            { height: 6 }
-          ),
-          dimensions.width
-        )}
-      />
       <SimpleStyleFlatList
         data={Constants['purchase_history']}
         horizontal={false}
@@ -165,7 +118,12 @@ const PurchaseHistoryScreen = props => {
               {/* movie detai */}
               <View
                 style={StyleSheet.applyWidth(
-                  { flexDirection: 'row', gap: 35 },
+                  {
+                    flexDirection: 'row',
+                    gap: 20,
+                    paddingBottom: 10,
+                    paddingTop: 10,
+                  },
                   dimensions.width
                 )}
               >
@@ -207,12 +165,16 @@ const PurchaseHistoryScreen = props => {
                         style={StyleSheet.applyWidth(
                           StyleSheet.compose(
                             GlobalStyles.TextStyles(theme)['Poppins'].style,
-                            { textAlign: 'left' }
+                            {
+                              fontFamily: 'Poppins_700Bold',
+                              fontSize: 16,
+                              textAlign: 'left',
+                            }
                           ),
                           dimensions.width
                         )}
                       >
-                        {'Vina'}
+                        {'VINA: SEBELUM 7 HARI'}
                       </Text>
                     </View>
                     {/* View 3 */}
@@ -263,7 +225,7 @@ const PurchaseHistoryScreen = props => {
                           dimensions.width
                         )}
                       >
-                        {'Braga XXI'}
+                        {'BRAGA XXI'}
                       </Text>
                     </View>
                     {/* View 3 */}
@@ -277,7 +239,14 @@ const PurchaseHistoryScreen = props => {
                         accessible={true}
                         {...GlobalStyles.TextStyles(theme)['Poppins'].props}
                         style={StyleSheet.applyWidth(
-                          GlobalStyles.TextStyles(theme)['Poppins'].style,
+                          StyleSheet.compose(
+                            GlobalStyles.TextStyles(theme)['Poppins'].style,
+                            {
+                              color: theme.colors['Primary Color'],
+                              fontFamily: 'Poppins_700Bold',
+                              fontSize: 16,
+                            }
+                          ),
                           dimensions.width
                         )}
                       >
@@ -353,7 +322,12 @@ const PurchaseHistoryScreen = props => {
                       {/* View 3 */}
                       <View
                         style={StyleSheet.applyWidth(
-                          { flex: 1 },
+                          {
+                            alignItems: 'center',
+                            flex: 1,
+                            flexDirection: 'row',
+                            justifyContent: 'center',
+                          },
                           dimensions.width
                         )}
                       >
@@ -361,12 +335,24 @@ const PurchaseHistoryScreen = props => {
                           accessible={true}
                           {...GlobalStyles.TextStyles(theme)['Poppins'].props}
                           style={StyleSheet.applyWidth(
-                            GlobalStyles.TextStyles(theme)['Poppins'].style,
+                            StyleSheet.compose(
+                              GlobalStyles.TextStyles(theme)['Poppins'].style,
+                              {
+                                color: theme.colors['Secondary Color'],
+                                fontFamily: 'Poppins_700Bold',
+                                fontSize: 16,
+                              }
+                            ),
                             dimensions.width
                           )}
                         >
-                          {'View\n'}
+                          {'View Details'}
                         </Text>
+                        <Icon
+                          size={24}
+                          color={theme.colors['Secondary Color']}
+                          name={'Entypo/chevron-right'}
+                        />
                       </View>
                     </Pressable>
                   </View>
@@ -374,11 +360,11 @@ const PurchaseHistoryScreen = props => {
               </View>
               <Divider
                 {...GlobalStyles.DividerStyles(theme)['Divider'].props}
-                color={theme.colors['Light']}
+                color={theme.colors['Custom Color_7']}
                 style={StyleSheet.applyWidth(
                   StyleSheet.compose(
                     GlobalStyles.DividerStyles(theme)['Divider'].style,
-                    { height: 6 }
+                    { height: 3 }
                   ),
                   dimensions.width
                 )}
@@ -388,6 +374,10 @@ const PurchaseHistoryScreen = props => {
         }}
         showsHorizontalScrollIndicator={true}
         showsVerticalScrollIndicator={true}
+        style={StyleSheet.applyWidth(
+          { paddingLeft: 16, paddingRight: 16, paddingTop: 10 },
+          dimensions.width
+        )}
       />
     </ScreenContainer>
   );

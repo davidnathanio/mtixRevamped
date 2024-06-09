@@ -14,7 +14,7 @@ import {
   SimpleStyleFlatList,
   withTheme,
 } from '@draftbit/ui';
-import { Image, Text, View } from 'react-native';
+import { Image, Modal, Text, View } from 'react-native';
 
 const MfoodConfirmOrderScreen = props => {
   const { theme, navigation } = props;
@@ -22,6 +22,11 @@ const MfoodConfirmOrderScreen = props => {
   const Constants = GlobalVariables.useValues();
   const Variables = Constants;
   const [selected_filter, setSelected_filter] = React.useState('');
+  const [showConfirmationModal, setShowConfirmationModal] =
+    React.useState(false);
+  const [showReviewModal, setShowReviewModal] = React.useState(false);
+  const [starRatingValue2, setStarRatingValue2] = React.useState(0);
+  const [textAreaValue, setTextAreaValue] = React.useState('');
   const multiply = (quantity, price) => {
     // Type the code for the body of your function or hook here.
     // Functions can be triggered via Button/Touchable actions.
@@ -492,7 +497,15 @@ line two` ) and will not work with special characters inside of quotes ( example
             dimensions.width
           )}
         >
-          <Pressable>
+          <Pressable
+            onPress={() => {
+              try {
+                setShowConfirmationModal(true);
+              } catch (err) {
+                console.error(err);
+              }
+            }}
+          >
             <View
               style={StyleSheet.applyWidth(
                 {
@@ -524,6 +537,189 @@ line two` ) and will not work with special characters inside of quotes ( example
           </Pressable>
         </View>
       </View>
+
+      <Modal
+        animationType={'none'}
+        supportedOrientations={['portrait', 'landscape']}
+        {...GlobalStyles.ModalStyles(theme)['paymentStylesheet'].props}
+        presentationStyle={'formSheet'}
+        style={StyleSheet.applyWidth(
+          GlobalStyles.ModalStyles(theme)['paymentStylesheet'].style,
+          dimensions.width
+        )}
+        transparent={true}
+        visible={showConfirmationModal}
+      >
+        {/* For Padding (transparent) */}
+        <View
+          style={StyleSheet.applyWidth(
+            {
+              alignItems: 'center',
+              backgroundColor: '"rgba(0, 0, 0, 0.3)"',
+              gap: 10,
+              height: '100%',
+              justifyContent: 'center',
+            },
+            dimensions.width
+          )}
+        >
+          {/* Modal Square */}
+          <View
+            style={StyleSheet.applyWidth(
+              {
+                backgroundColor: 'rgb(255, 255, 255)',
+                marginBottom: 10,
+                paddingLeft: 16,
+                paddingRight: 16,
+                paddingTop: 20,
+              },
+              dimensions.width
+            )}
+          >
+            {/* Text 2 */}
+            <Text
+              accessible={true}
+              {...GlobalStyles.TextStyles(theme)['Text'].props}
+              style={StyleSheet.applyWidth(
+                StyleSheet.compose(
+                  GlobalStyles.TextStyles(theme)['Text'].style,
+                  {
+                    fontFamily: 'Poppins_400Regular',
+                    fontSize: 16,
+                    marginBottom: 30,
+                  }
+                ),
+                dimensions.width
+              )}
+            >
+              {
+                'm.food purchase must be picked up on the same day within 15 minutes after order, in outlet xxi cafe CIWALK XXI.\n\nDo you want to confirm your order and continue the transaction?'
+              }
+            </Text>
+            {/* Action Buttons */}
+            <View
+              style={StyleSheet.applyWidth(
+                { flexDirection: 'row', justifyContent: 'space-around' },
+                dimensions.width
+              )}
+            >
+              {/* Cancel */}
+              <View
+                style={StyleSheet.applyWidth(
+                  {
+                    height: 100,
+                    paddingBottom: 16,
+                    paddingLeft: 11,
+                    paddingRight: 11,
+                    paddingTop: 16,
+                  },
+                  dimensions.width
+                )}
+              >
+                <Pressable
+                  onPress={() => {
+                    try {
+                      setShowConfirmationModal(false);
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
+                >
+                  <View
+                    style={StyleSheet.applyWidth(
+                      {
+                        backgroundColor: theme.colors['Surface'],
+                        borderColor: theme.colors['Primary Color'],
+                        borderRadius: 10,
+                        borderWidth: 3,
+                        paddingBottom: 14,
+                        paddingLeft: 25,
+                        paddingRight: 25,
+                        paddingTop: 14,
+                      },
+                      dimensions.width
+                    )}
+                  >
+                    <Text
+                      accessible={true}
+                      {...GlobalStyles.TextStyles(theme)['Poppins'].props}
+                      style={StyleSheet.applyWidth(
+                        StyleSheet.compose(
+                          GlobalStyles.TextStyles(theme)['Poppins'].style,
+                          {
+                            color: theme.colors['Primary Color'],
+                            fontFamily: 'Poppins_700Bold',
+                          }
+                        ),
+                        dimensions.width
+                      )}
+                    >
+                      {'Cancel'}
+                    </Text>
+                  </View>
+                </Pressable>
+              </View>
+              {/* Yes */}
+              <View
+                style={StyleSheet.applyWidth(
+                  {
+                    height: 100,
+                    paddingBottom: 16,
+                    paddingLeft: 11,
+                    paddingRight: 11,
+                    paddingTop: 16,
+                  },
+                  dimensions.width
+                )}
+              >
+                <Pressable
+                  onPress={() => {
+                    try {
+                      setShowConfirmationModal(false);
+                      navigation.navigate('BottomTabNavigator', {
+                        screen: 'HomepageScreen',
+                      });
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
+                >
+                  <View
+                    style={StyleSheet.applyWidth(
+                      {
+                        backgroundColor: 'rgb(1, 83, 81)',
+                        borderRadius: 10,
+                        paddingBottom: 16,
+                        paddingLeft: 38,
+                        paddingRight: 38,
+                        paddingTop: 16,
+                      },
+                      dimensions.width
+                    )}
+                  >
+                    <Text
+                      accessible={true}
+                      {...GlobalStyles.TextStyles(theme)['Poppins'].props}
+                      style={StyleSheet.applyWidth(
+                        StyleSheet.compose(
+                          GlobalStyles.TextStyles(theme)['Poppins'].style,
+                          {
+                            color: 'rgb(255, 255, 255)',
+                            fontFamily: 'Poppins_700Bold',
+                          }
+                        ),
+                        dimensions.width
+                      )}
+                    >
+                      {'Yes'}
+                    </Text>
+                  </View>
+                </Pressable>
+              </View>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </ScreenContainer>
   );
 };

@@ -344,9 +344,7 @@ line two` ) and will not work with special characters inside of quotes ( example
           <Pressable
             onPress={() => {
               try {
-                if (countQuantities(Constants['all_food']) > 0) {
-                  navigation.navigate('MfoodConfirmOrderScreen');
-                }
+                navigation.navigate('PurchaseHistoryScreen');
               } catch (err) {
                 console.error(err);
               }

@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Mengubah format harga dari integer menjadi format Rupiah
 const intToPrice = int => {
   // Type the code for the body of your function or hook here.
   // Functions can be triggered via Button/Touchable actions.

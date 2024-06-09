@@ -13,7 +13,7 @@ import {
   YoutubePlayer,
   withTheme,
 } from '@draftbit/ui';
-import { Image, Modal, Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 
 const MovieDetails2Screen = props => {
   const { theme, navigation } = props;
@@ -580,7 +580,15 @@ const MovieDetails2Screen = props => {
               dimensions.width
             )}
           >
-            <Pressable>
+            <Pressable
+              onPress={() => {
+                try {
+                  navigation.navigate('MovieScheduleScreen');
+                } catch (err) {
+                  console.error(err);
+                }
+              }}
+            >
               <View
                 style={StyleSheet.applyWidth(
                   {
@@ -961,24 +969,56 @@ const MovieDetails2Screen = props => {
             </View>
           </SimpleStyleScrollView>
         </View>
-        {/* Pressable 2 */}
+      </SimpleStyleScrollView>
+      {/* CTA Button */}
+      <View
+        style={StyleSheet.applyWidth(
+          {
+            height: 100,
+            paddingBottom: 16,
+            paddingLeft: 9,
+            paddingRight: 9,
+            paddingTop: 16,
+          },
+          dimensions.width
+        )}
+      >
         <Pressable
           onPress={() => {
             try {
-              setShowModal(true);
+              navigation.navigate('MovieScheduleScreen');
             } catch (err) {
               console.error(err);
             }
           }}
-          style={StyleSheet.applyWidth({ minHeight: 50 }, dimensions.width)}
         >
-          <Icon
-            size={24}
-            color={theme.colors['Strong Inverse']}
-            name={'MaterialIcons/arrow-back'}
-          />
+          <View
+            style={StyleSheet.applyWidth(
+              {
+                backgroundColor: 'rgb(1, 83, 81)',
+                borderRadius: 10,
+                paddingBottom: 14,
+                paddingTop: 14,
+              },
+              dimensions.width
+            )}
+          >
+            <Text
+              accessible={true}
+              {...GlobalStyles.TextStyles(theme)['Poppins'].props}
+              style={StyleSheet.applyWidth(
+                StyleSheet.compose(
+                  GlobalStyles.TextStyles(theme)['Poppins'].style,
+                  { color: 'rgb(255, 255, 255)', fontFamily: 'Poppins_700Bold' }
+                ),
+                dimensions.width
+              )}
+            >
+              {'Buy Ticket'}
+            </Text>
+          </View>
         </Pressable>
-      </SimpleStyleScrollView>
+      </View>
     </ScreenContainer>
   );
 };

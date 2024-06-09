@@ -3,8 +3,8 @@ import * as GlobalStyles from '../GlobalStyles.js';
 import CityLocationBlock from '../components/CityLocationBlock';
 import * as GlobalVariables from '../config/GlobalVariableContext';
 import Images from '../config/Images';
-import selectedFilterColorG from '../global-functions/selectedFilterColorG';
-import selectedFilterTextColorG from '../global-functions/selectedFilterTextColorG';
+import selectedFilterColorGlobal from '../global-functions/selectedFilterColorGlobal';
+import selectedFilterTextColorGlobal from '../global-functions/selectedFilterTextColorGlobal';
 import Breakpoints from '../utils/Breakpoints';
 import * as StyleSheet from '../utils/StyleSheet';
 import useWindowDimensions from '../utils/useWindowDimensions';
@@ -204,7 +204,10 @@ line two` ) and will not work with special characters inside of quotes ( example
                   { minWidth: Breakpoints.Mobile, value: 'rgb(255, 255, 255)' },
                   {
                     minWidth: Breakpoints.Mobile,
-                    value: selectedFilterColorG('favorites', selected_filter),
+                    value: selectedFilterColorGlobal(
+                      'favorites',
+                      selected_filter
+                    ),
                   },
                 ],
                 borderColor: 'rgb(189, 151, 89)',
@@ -234,7 +237,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                       },
                       {
                         minWidth: Breakpoints.Mobile,
-                        value: selectedFilterTextColorG(
+                        value: selectedFilterTextColorGlobal(
                           'favorites',
                           selected_filter
                         ),
@@ -271,7 +274,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                   { minWidth: Breakpoints.Mobile, value: 'rgb(255, 255, 255)' },
                   {
                     minWidth: Breakpoints.Mobile,
-                    value: selectedFilterColorG('semua', selected_filter),
+                    value: selectedFilterColorGlobal('semua', selected_filter),
                   },
                 ],
                 borderColor: 'rgb(189, 151, 89)',
@@ -301,7 +304,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                       },
                       {
                         minWidth: Breakpoints.Mobile,
-                        value: selectedFilterTextColorG(
+                        value: selectedFilterTextColorGlobal(
                           'semua',
                           selected_filter
                         ),
@@ -334,7 +337,10 @@ line two` ) and will not work with special characters inside of quotes ( example
           <View
             style={StyleSheet.applyWidth(
               {
-                backgroundColor: selectedFilterColorG('xxi', selected_filter),
+                backgroundColor: selectedFilterColorGlobal(
+                  'xxi',
+                  selected_filter
+                ),
                 borderColor: 'rgb(189, 151, 89)',
                 borderRadius: 5,
                 borderWidth: 1,
@@ -361,7 +367,10 @@ line two` ) and will not work with special characters inside of quotes ( example
                       },
                       {
                         minWidth: Breakpoints.Mobile,
-                        value: selectedFilterTextColorG('xxi', selected_filter),
+                        value: selectedFilterTextColorGlobal(
+                          'xxi',
+                          selected_filter
+                        ),
                       },
                     ],
                     fontFamily: 'Poppins_400Regular',
@@ -391,7 +400,7 @@ line two` ) and will not work with special characters inside of quotes ( example
           <View
             style={StyleSheet.applyWidth(
               {
-                backgroundColor: selectedFilterColorG(
+                backgroundColor: selectedFilterColorGlobal(
                   'the premiere',
                   selected_filter
                 ),
@@ -421,7 +430,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                       },
                       {
                         minWidth: Breakpoints.Mobile,
-                        value: selectedFilterTextColorG(
+                        value: selectedFilterTextColorGlobal(
                           'the premiere',
                           selected_filter
                         ),
@@ -454,7 +463,10 @@ line two` ) and will not work with special characters inside of quotes ( example
           <View
             style={StyleSheet.applyWidth(
               {
-                backgroundColor: selectedFilterColorG('imax', selected_filter),
+                backgroundColor: selectedFilterColorGlobal(
+                  'imax',
+                  selected_filter
+                ),
                 borderColor: 'rgb(189, 151, 89)',
                 borderRadius: 5,
                 borderWidth: 1,
@@ -481,7 +493,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                       },
                       {
                         minWidth: Breakpoints.Mobile,
-                        value: selectedFilterTextColorG(
+                        value: selectedFilterTextColorGlobal(
                           'imax',
                           selected_filter
                         ),
