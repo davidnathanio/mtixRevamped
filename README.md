@@ -1,31 +1,22 @@
-# Welcome to your Draftbit app!
+# m.tix Revamped
+Created By:
+18220089 David Nathanio Gabriel Siahaan
 
-This `README` is designed to help you get your Draftbit app running locally. Read
-through the next few sections carefully, and if you encounter any issues please
-do not hesitate to post in [Community](https://community.draftbit.com).
-
-> Note that all of the commands in this document should be run using your
-> computer's **command line**. If you're unsure of what this is, please read
-> [this](https://tutorial.djangogirls.org/en/intro_to_command_line/) guide
-> before moving on.
-
-Remember, at any point you can go back to [build.draftbit.com](https://build.draftbit.com) and continue building your app
-there!
+This project is part of my Final Project as a graduation requirement of Institut Teknologi Bandung's Information System and Technology.
+m.tix Revamped is a redesigned version of m.tix, which is an Online-Ticketing Application for Cinema XXI.
+This is still a Minimum Viable Product (MVP), so not all features and pages have been implemented. However, this app gives a 
+better representation of the design prototype I created in Figma.
+For example, this app has a working filtering and searching function that is not possible to create in Figma.
 
 ## Requirements
 
 - [Node.js LTS release](https://nodejs.org/en/)
 - [Git](https://git-scm.com/)
-- [Watchman](https://facebook.github.io/watchman/docs/install#buildinstall) for macOS and Linux users
-- [Yarn](https://classic.yarnpkg.com/en/docs/install) use this over `npm install` when installing dependencies
+- [npm](https://www.npmjs.com/) for installing dependencies and running the application.
 
 > Only Node.js LTS releases (even-numbered) are recommended. As Node.js [officially states](https://nodejs.org/en/about/releases/), "Production applications should only use Active LTS or Maintenance LTS releases."
 
 ## Recommended Tools
-
-- [VSCode Editor](https://code.visualstudio.com/download)
-  - [VSCode Expo Extension](https://marketplace.visualstudio.com/items?itemName=expo.vscode-expo-tools) for `app.json` debugging and autocomplete.
-- Windows users: [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows), Bash via WSL, or the VSCode terminal.
 - Expo Go for iOS and Android
   - 🤖 [Android Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent) - Android Lollipop (5) and greater.
   - 🍎 [iOS App Store](https://itunes.com/apps/exponent) - iOS 11 and greater.
@@ -41,51 +32,32 @@ it's been installed correctly:
 $ node -v
 ```
 
-If you see the current version of Node in response, you've successfully
-installed Node on your machine.
-
-For example,
-
-```
-$ node -v
-v16.15.1
-```
-
-[Learn more about installing Nodejs](https://nodejs.dev/en/learn/how-to-install-nodejs/)
-
-> 😳 **Need help?** Try searching the [Community](https://community.draftbit.com) &mdash; which are a great resource for troubleshooting.
-
 ## Install Project Dependencies
 
-First, navigate to the project directory. The .zip will likely be in your
-downloads folder, so extract the .zip and move it to the desired location
-before proceeding.
+Open terminal in project directory, or make sure that your terminal is already in the correct directory.
 
 Now, run the following commands to install the project dependencies (note that
 you'll need an internet connection to do so).
 
 ```
-$ cd Desktop/New-App
-$ yarn
+$ npm install
 ```
 
 > The `cd` command above takes you into the project directory so you can install
 > the correct dependencies. You should replace `Desktop/New-App` with the actual
 > path to your unzipped project folder.
 
-## Log In to Expo
+## [Optional] Log In to Expo
 
 Verify that the installation was successful by running `npx expo whoami`. You're not logged in yet, so you will see "Not logged in". You can create an account by running `npx expo register` if you like, or if you have one already run `npx expo login`, but you also don't need an account to get started.
 
-[Learn more about Expo CLI here](https://docs.expo.io/get-started/installation/#installing-expo-cli)
+[You can learn more about Expo CLI here](https://docs.expo.io/get-started/installation/#installing-expo-cli)
 
 ## Running
 
-To start your project, simply run: `yarn start` inside of the project directory
-(make sure you've [installed the project dependencies](#install-project-dependencies) first). This should open the Expo
-developer tools in the command line.
+To start your project, simply run: `npm start` inside of the project directory
 
-### Running in an emulator
+### [Optional] Running in an emulator
 
 You can run your app on your mobile device, on the iOS simulator (if you have
 a Mac), or on the Android emulator. If you'd prefer to run your app on an
@@ -95,6 +67,7 @@ emulator, see the installation instructions below.
 - [Android Studio](https://docs.expo.io/workflow/android-studio-emulator/)
 
 After installing and launching the emulator, and while in the command line, type `a` to launch on the Android emulator or `i` to launch on the IOS simulator. You can also press `w` to launch on web.
+To do this, make sure that the Expo Go installed on your emulator is compatible with this project!
 
 ### Running on your Android or iOS Device
 
@@ -113,56 +86,12 @@ After installing, scan the barcode you see in the command line.
 .
     ├── assets                 # Static assets like images and fonts.
     ├── config                 # JS representation of fonts, images, and more
-    ├── screens                # React Native code for the screens you built.
-    │   └── MyFirstScreen.js   # Example file for the screen named "My First Screen"
+    ├── screens                # React Native code for the screens built.
     ├── themes                 # JS representation of the theme
     ├── .gitignore             # List of files to ignore when comitting with Git
-    ├── App.js                 # Entry point for your app
-    ├── app.json               # Configuration file for your app, used by Expo
-    ├── AppNavigator.js        # Code for your app's navigators
+    ├── App.js                 # Entry point for the app
+    ├── app.json               # Configuration file for the app, used by Expo
+    ├── AppNavigator.js        # Code for the app's navigators
     ├── package.json           # The metadata for your project, including dependencies
-    └── README.md              # This file!
+    └── README.md              # This file.
 ```
-
-## Publishing your app to the App Store
-
-Expo has really great documentation for how to get started. [Click here](https://docs.expo.dev/build/setup/) to learn more.
-
-## Troubleshooting
-
-Any errors that may occur in the process of developing or testing your app will show up as a "Redbox" error on the testing device. A red box will be show on the device with the error message and stack trace for the error. The Expo documentation has [more information about Redbox errors](https://docs.expo.dev/debugging/errors-and-warnings).
-
-Compilation errors or errors occurring when the expo process tries to execute
-commands will also show up in the command line. If you cannot fix these errors, you
-should refer to Expo's documentation on [debugging
-Javascript](https://docs.expo.dev/debugging/runtime-issues).
-
-## FAQ
-
-- _How can I add my code to GitHub?_
-
-  Pushing your code to GitHub is easy! Follow the information
-  [guide](https://help.github.com/en/github/getting-started-with-github/create-a-repo)
-  to create your repository and commit your project code.
-
-- _How do I build a binary for the App and Play store?_
-
-  Expo published an [excellent
-  guide](https://docs.expo.dev/build/setup/) for
-  deploying to the Apple App Store and the Google Play Store.
-
-- _What/where is the license for this code?_
-
-  There's no license by default, but if you create a GitHub repository for your
-  project code, for example, [adding a license is
-  easy](https://help.github.com/en/github/building-a-strong-community/adding-a-license-to-a-repository).
-
-- _Can I run Expo web with this?_
-
-  Of course! See [this](https://docs.expo.dev/workflow/web/) guide by Expo for running your React Native app in
-  a web browser.
-
-- _What libraries does this code depend on?_
-
-  You can see the full list in your projects `package.json` file (under the
-  `dependencies` section).
