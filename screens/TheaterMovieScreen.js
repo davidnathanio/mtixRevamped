@@ -753,53 +753,43 @@ line two` ) and will not work with special characters inside of quotes ( example
                       dimensions.width
                     )}
                   >
-                    <Pressable
-                      onPress={() => {
-                        try {
-                          navigation.navigate('ChooseSeatsPageScreen');
-                        } catch (err) {
-                          console.error(err);
-                        }
-                      }}
+                    {/* Button Jadwal */}
+                    <View
+                      style={StyleSheet.applyWidth(
+                        {
+                          alignSelf: 'center',
+                          backgroundColor: 'rgb(217, 217, 217)',
+                          borderRadius: 5,
+                          flex: 0,
+                          flexDirection: 'column',
+                          justifyContent: 'flex-start',
+                          paddingBottom: 4,
+                          paddingLeft: 20,
+                          paddingRight: 20,
+                          paddingTop: 4,
+                        },
+                        dimensions.width
+                      )}
                     >
-                      {/* Button Jadwal */}
-                      <View
+                      <Text
+                        accessible={true}
+                        {...GlobalStyles.TextStyles(theme)['Text'].props}
                         style={StyleSheet.applyWidth(
-                          {
-                            alignSelf: 'center',
-                            backgroundColor: 'rgb(217, 217, 217)',
-                            borderRadius: 5,
-                            flex: 0,
-                            flexDirection: 'column',
-                            justifyContent: 'flex-start',
-                            paddingBottom: 4,
-                            paddingLeft: 20,
-                            paddingRight: 20,
-                            paddingTop: 4,
-                          },
+                          StyleSheet.compose(
+                            GlobalStyles.TextStyles(theme)['Text'].style,
+                            {
+                              color: 'rgb(128, 128, 128)',
+                              fontFamily: 'Poppins_600SemiBold',
+                              fontSize: 16,
+                              textAlign: 'auto',
+                            }
+                          ),
                           dimensions.width
                         )}
                       >
-                        <Text
-                          accessible={true}
-                          {...GlobalStyles.TextStyles(theme)['Text'].props}
-                          style={StyleSheet.applyWidth(
-                            StyleSheet.compose(
-                              GlobalStyles.TextStyles(theme)['Text'].style,
-                              {
-                                color: 'rgb(128, 128, 128)',
-                                fontFamily: 'Poppins_600SemiBold',
-                                fontSize: 16,
-                                textAlign: 'auto',
-                              }
-                            ),
-                            dimensions.width
-                          )}
-                        >
-                          {'12:00'}
-                        </Text>
-                      </View>
-                    </Pressable>
+                        {'12:00'}
+                      </Text>
+                    </View>
                     {/* Button Jadwal 2 */}
                     <View
                       style={StyleSheet.applyWidth(
@@ -829,7 +819,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                           dimensions.width
                         )}
                       >
-                        {'12:00'}
+                        {'14:15'}
                       </Text>
                     </View>
                     {/* Button Jadwal 3 */}
@@ -861,7 +851,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                           dimensions.width
                         )}
                       >
-                        {'12:00'}
+                        {'16:30'}
                       </Text>
                     </View>
                     {/* Button Jadwal 4 */}
@@ -893,47 +883,62 @@ line two` ) and will not work with special characters inside of quotes ( example
                           dimensions.width
                         )}
                       >
-                        {'12:00'}
+                        {'18:45'}
                       </Text>
                     </View>
-                    {/* Button Jadwal 5 */}
-                    <View
-                      style={StyleSheet.applyWidth(
-                        {
-                          backgroundColor: 'rgb(217, 217, 217)',
-                          borderRadius: 5,
-                          paddingBottom: 4,
-                          paddingLeft: 20,
-                          paddingRight: 20,
-                          paddingTop: 4,
-                        },
-                        dimensions.width
-                      )}
+
+                    <Pressable
+                      onPress={() => {
+                        try {
+                          navigation.navigate('ChooseSeatsPageScreen');
+                        } catch (err) {
+                          console.error(err);
+                        }
+                      }}
                     >
-                      <Text
-                        accessible={true}
-                        {...GlobalStyles.TextStyles(theme)['Text'].props}
+                      {/* Button Jadwal 5 */}
+                      <View
                         style={StyleSheet.applyWidth(
-                          StyleSheet.compose(
-                            GlobalStyles.TextStyles(theme)['Text'].style,
-                            {
-                              color: 'rgb(128, 128, 128)',
-                              fontFamily: 'Poppins_600SemiBold',
-                              fontSize: 16,
-                            }
-                          ),
+                          {
+                            backgroundColor: theme.colors['Surface'],
+                            borderColor: theme.colors['Primary Color'],
+                            borderRadius: 5,
+                            borderWidth: 1,
+                            paddingBottom: 4,
+                            paddingLeft: 20,
+                            paddingRight: 20,
+                            paddingTop: 4,
+                          },
                           dimensions.width
                         )}
                       >
-                        {'12:00'}
-                      </Text>
-                    </View>
+                        <Text
+                          accessible={true}
+                          {...GlobalStyles.TextStyles(theme)['Text'].props}
+                          style={StyleSheet.applyWidth(
+                            StyleSheet.compose(
+                              GlobalStyles.TextStyles(theme)['Text'].style,
+                              {
+                                color: theme.colors['Primary Color'],
+                                fontFamily: 'Poppins_600SemiBold',
+                                fontSize: 16,
+                              }
+                            ),
+                            dimensions.width
+                          )}
+                        >
+                          {'21:00'}
+                        </Text>
+                      </View>
+                    </Pressable>
                     {/* Button Jadwal 6 */}
                     <View
                       style={StyleSheet.applyWidth(
                         {
-                          backgroundColor: 'rgb(217, 217, 217)',
+                          backgroundColor: theme.colors['Surface'],
+                          borderColor: theme.colors['Primary Color'],
                           borderRadius: 5,
+                          borderWidth: 1,
                           paddingBottom: 4,
                           paddingLeft: 20,
                           paddingRight: 20,
@@ -949,7 +954,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                           StyleSheet.compose(
                             GlobalStyles.TextStyles(theme)['Text'].style,
                             {
-                              color: 'rgb(128, 128, 128)',
+                              color: theme.colors['Primary Color'],
                               fontFamily: 'Poppins_600SemiBold',
                               fontSize: 16,
                             }
@@ -957,71 +962,7 @@ line two` ) and will not work with special characters inside of quotes ( example
                           dimensions.width
                         )}
                       >
-                        {'12:00'}
-                      </Text>
-                    </View>
-                    {/* Button Jadwal 7 */}
-                    <View
-                      style={StyleSheet.applyWidth(
-                        {
-                          backgroundColor: 'rgb(217, 217, 217)',
-                          borderRadius: 5,
-                          paddingBottom: 4,
-                          paddingLeft: 20,
-                          paddingRight: 20,
-                          paddingTop: 4,
-                        },
-                        dimensions.width
-                      )}
-                    >
-                      <Text
-                        accessible={true}
-                        {...GlobalStyles.TextStyles(theme)['Text'].props}
-                        style={StyleSheet.applyWidth(
-                          StyleSheet.compose(
-                            GlobalStyles.TextStyles(theme)['Text'].style,
-                            {
-                              color: 'rgb(128, 128, 128)',
-                              fontFamily: 'Poppins_600SemiBold',
-                              fontSize: 16,
-                            }
-                          ),
-                          dimensions.width
-                        )}
-                      >
-                        {'12:00'}
-                      </Text>
-                    </View>
-                    {/* Button Jadwal 8 */}
-                    <View
-                      style={StyleSheet.applyWidth(
-                        {
-                          backgroundColor: 'rgb(217, 217, 217)',
-                          borderRadius: 5,
-                          paddingBottom: 4,
-                          paddingLeft: 20,
-                          paddingRight: 20,
-                          paddingTop: 4,
-                        },
-                        dimensions.width
-                      )}
-                    >
-                      <Text
-                        accessible={true}
-                        {...GlobalStyles.TextStyles(theme)['Text'].props}
-                        style={StyleSheet.applyWidth(
-                          StyleSheet.compose(
-                            GlobalStyles.TextStyles(theme)['Text'].style,
-                            {
-                              color: 'rgb(128, 128, 128)',
-                              fontFamily: 'Poppins_600SemiBold',
-                              fontSize: 16,
-                            }
-                          ),
-                          dimensions.width
-                        )}
-                      >
-                        {'12:00'}
+                        {'23:00'}
                       </Text>
                     </View>
                   </View>

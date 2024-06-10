@@ -65,6 +65,44 @@ const HomepageScreen = props => {
       ageGroup: 'SU',
     },
   ]);
+  const [recommendedMovies, setRecommendedMovies] = React.useState([
+    {
+      id: 1,
+      URL: 'https://www.garfield.movie/images/synopsis_poster.jpg',
+      ats: false,
+      name: 'THE GARFIELD MOVIE',
+      genre: 'Cartoon, Comedy',
+      rating: '5',
+      studio: '2D',
+      ageGroup: 'SU',
+      recommendation1: 'liked',
+      recommendation2: 'Cartoon.',
+    },
+    {
+      id: 2,
+      URL: 'https://www.telkomsel.com/sites/default/files/2024-06/9.png',
+      ats: false,
+      name: 'HOW TO MAKE MILLIONS BEFORE GRANDMA DIES',
+      genre: 'Drama, Family',
+      rating: '5',
+      studio: '2D',
+      ageGroup: 'SU',
+      recommendation1: 'watched',
+      recommendation2: '1CM.',
+    },
+    {
+      id: 3,
+      URL: 'https://m.media-amazon.com/images/M/MV5BYzRmOGQwZjktYjM2Ni00M2NmLWFlZDYtZGFhM2RkM2VhZDI1XkEyXkFqcGdeQXVyMTM1NjM2ODg1._V1_.jpg',
+      ats: false,
+      name: 'THE ZONE OF INTEREST',
+      genre: 'Drama',
+      rating: '5',
+      studio: '2D',
+      ageGroup: 'SU',
+      recommendation1: 'liked',
+      recommendation2: 'Drama.',
+    },
+  ]);
   const [shownMovies, setShownMovies] = React.useState([
     {
       id: 1,
@@ -137,7 +175,7 @@ const HomepageScreen = props => {
         showsHorizontalScrollIndicator={true}
         showsVerticalScrollIndicator={true}
         style={StyleSheet.applyWidth(
-          { flexWrap: 'nowrap', marginBottom: 50 },
+          { flexWrap: 'nowrap', marginBottom: 0 },
           dimensions.width
         )}
       >
@@ -384,6 +422,339 @@ const HomepageScreen = props => {
             dimensions.width
           )}
         />
+        {/* Text 2 */}
+        <Text
+          accessible={true}
+          {...GlobalStyles.TextStyles(theme)['Text 2'].props}
+          style={StyleSheet.applyWidth(
+            StyleSheet.compose(GlobalStyles.TextStyles(theme)['Text 2'].style, {
+              fontFamily: 'Poppins_700Bold',
+              fontSize: 18,
+              marginBottom: 5,
+              paddingLeft: 16,
+            }),
+            dimensions.width
+          )}
+        >
+          {'Recommended'}
+        </Text>
+        {/* List 2 */}
+        <SimpleStyleFlatList
+          data={recommendedMovies}
+          inverted={false}
+          keyExtractor={(list2Data, index) =>
+            list2Data?.id ?? list2Data?.uuid ?? index.toString()
+          }
+          keyboardShouldPersistTaps={'never'}
+          listKey={'ezpc1EvM'}
+          nestedScrollEnabled={false}
+          numColumns={1}
+          onEndReachedThreshold={0.5}
+          renderItem={({ item, index }) => {
+            const list2Data = item;
+            return (
+              <Pressable
+                onPress={() => {
+                  try {
+                    if (pressMovie(list2Data?.name)) {
+                      navigation.navigate('MovieDetails2Screen');
+                    }
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
+              >
+                <View
+                  style={StyleSheet.applyWidth(
+                    {
+                      alignItems: 'center',
+                      alignSelf: 'center',
+                      flex: 1,
+                      flexDirection: 'column',
+                      justifyContent: 'flex-start',
+                    },
+                    dimensions.width
+                  )}
+                >
+                  <Image
+                    resizeMode={'cover'}
+                    {...GlobalStyles.ImageStyles(theme)['Image'].props}
+                    source={{ uri: `${list2Data?.URL}` }}
+                    style={StyleSheet.applyWidth(
+                      StyleSheet.compose(
+                        GlobalStyles.ImageStyles(theme)['Image'].style,
+                        { borderRadius: 10, height: 265, width: 174 }
+                      ),
+                      dimensions.width
+                    )}
+                  />
+                  {/* Movie Details */}
+                  <View
+                    style={StyleSheet.applyWidth(
+                      { gap: 5, maxWidth: 180 },
+                      dimensions.width
+                    )}
+                  >
+                    <Text
+                      accessible={true}
+                      {...GlobalStyles.TextStyles(theme)['Text'].props}
+                      style={StyleSheet.applyWidth(
+                        StyleSheet.compose(
+                          GlobalStyles.TextStyles(theme)['Text'].style,
+                          {
+                            fontFamily: 'Poppins_700Bold',
+                            fontSize: 18,
+                            textAlign: 'center',
+                          }
+                        ),
+                        dimensions.width
+                      )}
+                    >
+                      {list2Data?.name}
+                    </Text>
+                    {/* Category */}
+                    <View
+                      style={StyleSheet.applyWidth(
+                        {
+                          flexDirection: 'row',
+                          gap: 10,
+                          justifyContent: 'center',
+                        },
+                        dimensions.width
+                      )}
+                    >
+                      <View
+                        style={StyleSheet.applyWidth(
+                          {
+                            backgroundColor: 'rgb(189, 151, 89)',
+                            borderBottomLeftRadius: 5,
+                            borderBottomRightRadius: 5,
+                            borderTopLeftRadius: 5,
+                            borderTopRightRadius: 5,
+                            paddingBottom: 1,
+                            paddingLeft: 10,
+                            paddingRight: 10,
+                            paddingTop: 1,
+                          },
+                          dimensions.width
+                        )}
+                      >
+                        <Text
+                          accessible={true}
+                          {...GlobalStyles.TextStyles(theme)['Text'].props}
+                          style={StyleSheet.applyWidth(
+                            StyleSheet.compose(
+                              GlobalStyles.TextStyles(theme)['Text'].style,
+                              {
+                                color: theme.colors['Surface'],
+                                fontFamily: 'Poppins_700Bold',
+                                fontSize: 16,
+                              }
+                            ),
+                            dimensions.width
+                          )}
+                        >
+                          {'2D'}
+                        </Text>
+                      </View>
+                      {/* View 2 */}
+                      <View
+                        style={StyleSheet.applyWidth(
+                          {
+                            backgroundColor: 'rgb(189, 151, 89)',
+                            borderBottomLeftRadius: 5,
+                            borderBottomRightRadius: 5,
+                            borderTopLeftRadius: 5,
+                            borderTopRightRadius: 5,
+                            paddingBottom: 1,
+                            paddingLeft: 10,
+                            paddingRight: 10,
+                            paddingTop: 1,
+                          },
+                          dimensions.width
+                        )}
+                      >
+                        <Text
+                          accessible={true}
+                          {...GlobalStyles.TextStyles(theme)['Text'].props}
+                          style={StyleSheet.applyWidth(
+                            StyleSheet.compose(
+                              GlobalStyles.TextStyles(theme)['Text'].style,
+                              {
+                                color: theme.colors['Surface'],
+                                fontFamily: 'Poppins_700Bold',
+                                fontSize: 16,
+                              }
+                            ),
+                            dimensions.width
+                          )}
+                        >
+                          {'SU'}
+                        </Text>
+                      </View>
+                    </View>
+                    {/* Genre */}
+                    <Text
+                      accessible={true}
+                      {...GlobalStyles.TextStyles(theme)['Text'].props}
+                      style={StyleSheet.applyWidth(
+                        StyleSheet.compose(
+                          GlobalStyles.TextStyles(theme)['Text'].style,
+                          {
+                            alignSelf: 'center',
+                            color: 'rgb(132, 132, 132)',
+                            fontSize: 14,
+                          }
+                        ),
+                        dimensions.width
+                      )}
+                    >
+                      {'Horror, Drama'}
+                    </Text>
+                    {/* Rating */}
+                    <Text
+                      accessible={true}
+                      {...GlobalStyles.TextStyles(theme)['Text'].props}
+                      style={StyleSheet.applyWidth(
+                        StyleSheet.compose(
+                          GlobalStyles.TextStyles(theme)['Text'].style,
+                          {
+                            alignSelf: 'center',
+                            color: 'rgb(248, 193, 0)',
+                            fontFamily: 'Poppins_700Bold',
+                            fontSize: 16,
+                          }
+                        ),
+                        dimensions.width
+                      )}
+                    >
+                      {'★ 3,7'}
+                    </Text>
+                    {/* View 3 */}
+                    <>
+                      {!list2Data?.ats ? null : (
+                        <View
+                          style={StyleSheet.applyWidth(
+                            {
+                              alignContent: 'flex-start',
+                              alignItems: 'center',
+                              alignSelf: 'center',
+                              backgroundColor: 'rgb(246, 53, 53)',
+                              borderBottomLeftRadius: 5,
+                              borderBottomRightRadius: 5,
+                              borderTopLeftRadius: 5,
+                              borderTopRightRadius: 5,
+                              flexWrap: 'nowrap',
+                              justifyContent: 'flex-start',
+                              paddingBottom: 3,
+                              paddingLeft: 10,
+                              paddingRight: 10,
+                              paddingTop: 3,
+                            },
+                            dimensions.width
+                          )}
+                        >
+                          <Text
+                            accessible={true}
+                            {...GlobalStyles.TextStyles(theme)['Text'].props}
+                            style={StyleSheet.applyWidth(
+                              StyleSheet.compose(
+                                GlobalStyles.TextStyles(theme)['Text'].style,
+                                {
+                                  color: theme.colors['Surface'],
+                                  fontFamily: 'Poppins_700Bold',
+                                  fontSize: 12,
+                                }
+                              ),
+                              dimensions.width
+                            )}
+                          >
+                            {'ADVANCED TICKET SALES'}
+                          </Text>
+                        </View>
+                      )}
+                    </>
+                    <View
+                      style={StyleSheet.applyWidth(
+                        {
+                          alignContent: 'flex-start',
+                          alignItems: 'baseline',
+                          alignSelf: 'flex-start',
+                          flex: 1,
+                          flexDirection: 'column',
+                          flexWrap: 'wrap',
+                          justifyContent: 'space-evenly',
+                          marginTop: 5,
+                        },
+                        dimensions.width
+                      )}
+                    >
+                      {/* Text 2 */}
+                      <Text
+                        accessible={true}
+                        {...GlobalStyles.TextStyles(theme)['Text 2'].props}
+                        style={StyleSheet.applyWidth(
+                          StyleSheet.compose(
+                            GlobalStyles.TextStyles(theme)['Text 2'].style,
+                            { flex: 1, fontFamily: 'Poppins_600SemiBold' }
+                          ),
+                          dimensions.width
+                        )}
+                      >
+                        {'Becase you '}
+                        {list2Data?.recommendation1}
+                        <Text
+                          accessible={true}
+                          {...GlobalStyles.TextStyles(theme)['Text 2'].props}
+                          style={StyleSheet.applyWidth(
+                            StyleSheet.compose(
+                              GlobalStyles.TextStyles(theme)['Text 2'].style,
+                              { color: theme.colors['Secondary Color'] }
+                            ),
+                            dimensions.width
+                          )}
+                        >
+                          {' '}
+                          {list2Data?.recommendation2}
+                        </Text>
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </Pressable>
+            );
+          }}
+          showsHorizontalScrollIndicator={true}
+          showsVerticalScrollIndicator={true}
+          horizontal={true}
+          style={StyleSheet.applyWidth(
+            {
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              gap: 20,
+              justifyContent: 'space-between',
+              marginLeft: 16,
+              marginRight: 16,
+              paddingBottom: 15,
+            },
+            dimensions.width
+          )}
+        />
+        <Text
+          accessible={true}
+          {...GlobalStyles.TextStyles(theme)['Text 2'].props}
+          style={StyleSheet.applyWidth(
+            StyleSheet.compose(GlobalStyles.TextStyles(theme)['Text 2'].style, {
+              fontFamily: 'Poppins_700Bold',
+              fontSize: 18,
+              marginBottom: 5,
+              paddingLeft: 16,
+            }),
+            dimensions.width
+          )}
+        >
+          {'Now Playing'}
+        </Text>
         <SimpleStyleFlatList
           data={shownMovies}
           horizontal={false}
